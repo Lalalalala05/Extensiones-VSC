@@ -1,0 +1,5 @@
+
+*.zip
+
+#Ejemplos (si se modifican debiesen incluirse en el git):
+syntax-highlighting-VS-Code-example-master/

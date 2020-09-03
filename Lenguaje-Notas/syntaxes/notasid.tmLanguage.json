@@ -1,0 +1,245 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Notas",
+	"patterns": [
+		{
+			"include": "#palabras_clave"
+		},{
+			"include": "#tópicos"
+		},{
+			"include": "#atajo"
+		},{
+			"include": "#numeros"
+		},{
+			"include": "#compactos"
+		},{
+			"include": "#strings"
+		},{
+			"include": "#entre_puntuaciones"
+		},{
+			"include": "#variables_y_tipos"
+		},{
+			"include": "#comentarios"
+		},{
+			"include": "#operadores"
+		},{
+			"include": "#regex"
+		},{
+			"include": "#codigos"
+		},{
+			"include": "#formato_fuente"
+		}
+	],
+	"repository": {
+		"palabras_clave": {
+			"patterns": [{
+				"name": "palabra.clave.n.notasid",
+				"match": "(?<!\\w)(Notas?:?|Pendientes?:|Command\\ ?=|\"command\"|\"when\")(?!\\w)"
+			}]
+		},
+		"strings": {
+			"name": "strings.notasid",
+			"patterns": [{
+				"name": "string.quoted.double.notasid",
+				"begin": "\"",
+				"end": "\"",
+				"patterns": [
+					{
+						"name": "constant.character.escape.dou.notasid",
+						"match": "\\\\."
+					}
+				]
+			},{
+				"name": "string.quoted.single.notasid",
+				"begin": "(?<!\\w)'",
+				"end": "'",
+				"patterns": [
+					{
+						"name": "constant.character.escape.sin.notasid",
+						"match": "\\\\."
+					}
+				]
+			}]
+		},
+		"comentarios":{
+			"patterns": [{
+					"name":"comment.linea.notasid",
+					"match": "\/\/(.*)$",
+					"captures": {"1":{"patterns": [{"include": "#palabras_clave"},
+																				 {"include": "#atajo"},
+																				 {"include": "#compactos"},
+																				 {"include": "#strings"},
+																				 {"include": "#variables_y_tipos"}]}}
+				},{
+					"name":"comment.bloque.notasid",
+					"begin": "/\\*",
+					"end": "\\*/",
+					"patterns": [{
+							"name":"comment.destacado.n.bloque.notasid",
+							"match": "\/\/.*$"
+						},{
+							"name":"comment.destacado.n.bloque.notasid",
+							"begin": "/\\*",
+							"end": "\\*/"
+						}]
+				}]
+		},
+		"regex":{
+			"patterns": [{
+					"name":"constant.regexp",
+					"match": "rgx\\{\\s(.+?)\\s\\}rgx",
+					"captures": {
+						"1":{ "name":"regex.interior.n.notasid" }
+					}
+				}]
+		},
+		"tópicos":{
+			"patterns": [{
+					"name":"topico.n.simbolo.notasid",
+					"match": "(?<=\\s)[!#·?]\\)(?=\\s)"
+				},{
+					"name":"topico.n.numerado.notasid",
+					"match": "(?<=\\s)\\d+\\)(?=\\s)"
+				},{
+					"name":"listado.notasid",
+					"begin": "\\bL{",
+					"end": "}L\\b",
+					"patterns": [{
+						"name":"item.listado.n.notasid",
+						"match": "^\\s*(?!\\}L)\\S+"
+					},{
+						"include": "source.txt"
+					}]
+			}]
+		},
+		"atajo":{
+			"patterns": [{
+					"name":"string.atajo.n.comun.notasid",
+					"match": "(?<=\\s|^)((Ctrl|Shift|Mayús|Alt|Win)\\+)+.+?(?=\\t|\\s{2,})"
+				},{
+					"name":"string.atajo.n.adicional.notasid",
+					"match": "(?<=\\s|^)\\(,?\\+?(Ctrl|Shift|Mayús|Alt|Win)(\\+?|\\+(Ctrl|Shift|Mayús|Alt|Win)\\+?)*\\)(?=\\s)"
+				},{
+					"name":"string.atajo.n.Fn.notasid",
+					"match": "^\\s*F(\\d|1[012])\\s"
+			}]
+		},
+		"numeros": {
+			"name": "constant.numeric.notasid",
+			"patterns": [{
+				"name": "constant.numeric.con.separador.de.miles.notasid",
+				"match": "\\b\\d{1,3}(,\\d{3})+(\\.[\\d_]+)?\\b"
+			},{
+				"name": "constant.numeric.sin.separador.de.miles.notasid",
+				"match": "\\b[\\d_]+(\\.[\\d_]+)?\\b"
+			}]
+		},
+		"compactos":{
+			"patterns": [{
+					"name":"string.link.n.notasid",
+					"match":"\\b(http|https|ftp|file)://\\S+\\b/?"
+				},{
+					"name":"string.path.n.notasid",
+					"match":"(?<!\\w)\"([A-Z]:|\\.\\.?)\\\\.+\""
+				}
+			]
+		},
+		"entre_puntuaciones":{
+			"patterns": [{
+					"name":"string.exclamacion.n.notasid",
+					"match": "(?<!\\w)¡(.+?)(?<!\\\\)!(?!\\w)",
+					"captures": {
+						"1":{ "patterns": [{
+										"include": "source.txt"
+									},{
+										"name":"constant.character.escape",
+										"match": "\\\\\\!"
+								}]}
+					}
+				},{
+					"name":"string.pregunta.n.notasid",
+					"match": "(?<!\\w)¿(.*?)(?<!\\\\)\\?(?!\\w)",
+					"captures": {
+						"1":{ "patterns": [{
+										"include": "source.txt"
+									},{
+										"name":"constant.character.escape",
+										"match": "\\\\\\?"
+								}]}
+					}
+			}]
+		},
+		"variables_y_tipos":{
+			"patterns": [{
+					"name":"clase.n.conexion.por.puntos.notasid",
+					"match": "\\b\\w+(\\.\\w+)+\\b"
+				},{
+					"name":"clase.n.marcado.notasid",
+					"match": "\\bC'\\w+(\\.\\w+)*'"
+				},{
+					"name":"emphasis.clase.n.marcado.notasid",
+					"match": "\\bC\"\\w+(\\.\\w+)*\""
+				},{
+					"name":"support.type.property-name.por.comenzar.con.punto.notasid",
+					"match": "\\.\\w+(\\.\\w+)+\\b"
+				},{
+					"name":"support.type.property-name.marcado.notasid",
+					"match": "\\bP'\\w+(\\.\\w+)*'"
+				},{
+					"name":"propiedad.ita.n.marcado.notasid",
+					"match": "\\bP\"\\w+(\\.\\w+)*\""
+				},{
+					"name":"constante.n.marcado.notasid",
+					"match": "\\bc'\\w+(\\.\\w+)*'"
+				},{
+					"name":"constante.ita.n.marcado.notasid",
+					"match": "\\bc\"\\w+(\\.\\w+)*\""
+			}]
+		},
+		"operadores":{
+			"patterns": [{
+					"name":"operador.n.aislado.notasid",
+					"match": "(?<=\\s)[+\\-*/%&]{1,2}(?=\\s|$)"
+				},{
+					"name":"operador.n.en.formula.notasid",
+					"match": "(?<=\\b[\\d_]+(\\.[\\d_]+)?\\b)[+\\-*/%&]{1,2}(?=\\b[\\d_]+(\\.[\\d_]+)?\\b)"
+				}]
+		},
+		"codigos":{
+			"patterns": [{
+					"name":"generico.n.notasid",
+					"begin": "Código{",
+					"end": "}Código"
+				},{
+					"name":"codigo.csharp.notasid",
+					"begin": "C#{",
+					"end": "}C#",
+					"patterns": [{"include": "source.cs"}]
+				}]
+		},
+		"formato_fuente":{
+			"patterns": [{
+					"name":"emphasis",
+					"begin": "(?<=\\s|^)~'",
+					"end": "'",
+					"patterns": [{
+						"name":"constant.character.escape",
+						"match": "\\\\'"
+					},{
+						"include": "source.txt"
+					}]
+			},{
+					"name":"strong",
+					"begin": "(?<=\\s|^)[·]'",
+					"end": "'",
+					"patterns": [{
+							"name":"constant.character.escape",
+							"match": "\\\\'"
+						},{
+							"include": "source.txt"
+					}]
+			}]
+		}
+	},
+	"scopeName": "source.txt"
+}

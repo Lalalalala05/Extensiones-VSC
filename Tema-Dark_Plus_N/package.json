@@ -1,0 +1,21 @@
+{
+    "name": "Tema-Dark_Plus_N",
+    "displayName": "Tema_N",
+    "description": "tema n",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.48.0"
+    },
+    "categories": [
+        "Themes"
+    ],
+    "contributes": {
+        "themes": [
+            {
+                "label": "Dark N",
+                "uiTheme": "vs-dark",
+                "path": "./themes/dark_plus_n.json"
+            }
+        ]
+    }
+}

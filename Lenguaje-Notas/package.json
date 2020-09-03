@@ -1,0 +1,29 @@
+{
+    "name": "notas",
+    "displayName": "Notas",
+    "description": "Lenguaje para tomar notas.",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.48.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "notasid",
+            "aliases": ["Notas", "notasid"],
+            "extensions": [".txt"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "notasid",
+            "scopeName": "source.txt",
+            "path": "./syntaxes/notasid.tmLanguage.json",
+            "embeddedLanguages": {
+                "source.cs": "csharp",
+                "source.vb": "vb"
+            }
+        }]
+    }
+}
