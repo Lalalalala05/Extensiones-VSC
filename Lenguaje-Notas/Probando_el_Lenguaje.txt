@@ -1,8 +1,50 @@
 Palabras Calve{
-	Nota, Notas, Nota:, Notas:
-	Pendiente, Pendientes, Pendiente:, Pendientes:
-	command, Command, command=, Command=, "command", "Command"
-	when, when=, "when"
+	Nota, Notas, Nota:, Notas:,
+	Pendiente, Pendientes, Pendiente:, Pendientes:,
+	Solución, Soluciones, Solución:, Soluciones:,
+	Command Palette, "Command Palette", #Command Palette#
+	
+	command, Command, command=, Command=, "command", "Command",
+	when, when=, "when",
+}
+
+Símbolos clave {
+	←-, ←---, ←-----
+	---→
+	←---→
+	---
+	→---
+	---←
+	→---←
+	(×)
+	(○), (☺), (☻)
+}
+
+Prueba regiones{
+	R{
+		a
+	}R Esta línea debiese ocultarse (○)
+	---
+	R{
+		a
+	}RNo sé si esta línea debiese ocultarse
+	---
+	R{
+		a
+	"No sé si esta línea }R debiese ocultarse" ¡Cierre forzado! }
+	---
+	R{
+		a // }R Esto ¡no! debería cerrar la región. (×)
+		¡Clausura forzada! }
+		¡Apertura Forzada! R{
+	}R
+	---
+	R{
+		R{
+			a
+		}R Esta línea debiese ocultarse en la región interior (○)
+	}R   Esta línea debiese ocultarse en la región exterior (○)
+	---
 }
 
 Strings{
@@ -11,72 +53,148 @@ Strings{
 }
 
 Números{
-	234.3242
-	1,234,567,851
-	1_23_4_56.789
+	Sin separador de miles{
+		¡234.3242!
+		¡1_23_4_56.789!
+		¡2_5___6_8.89_9_6!
+		¡.356!
+		¡_!
+		¡_2!
+		¡3_!
+	}
+	Con separador de miles{
+		¡1,234,567,851!
+		¡1,2_4,567,851!
+		¡1,23_4,567,851!
+
+	}
+	Hexadecimal{
+		0xAF, 0xAG, ¡0x8080_AAAA_BB._1!
+		0xaf, 0xag, ¡0x8080_aaAa_Bb._1!
+	}
+	Con Unidades y monetario{
+		34º, 34,000º
+		34ª, 34,000ª
+		34°, 34,000°
+		34hs, 34,000Hs
+		34', 34,000'
+		34min, 34,000MIN
+		34'', 34,000''
+		34seg, 34,000Seg
+		34K, 34,000k
+		34Km, 34,000km
+		34m, 34,000M
+		34l, 34,000L
+		34Gb, 34,000GB
+
+		$34, £34
+		34$, 34£
+	}
 }
 
 Ambos: 46 '46' 4'56'
 
 Exclamaciones{
- ¡sf}fa!
- ¡Nota!
- ¿sf}fa?
- ¿Nota?
- ¡sf\!\fa!, ¡Nota\!!, ¡c'sfsg'!, ¡¿sadf?!, ¡¿sd¡asfl!sf?!, ¡"lajsldflj"!, ¡//sdasdf!, ¡4646!, ¡/*sdfsaf/*sdfsfas*/sadf*/!
- ¿sf\?\fa?, ¿Nota\??, ¿c'sfsg'?, ¿¡sadf!?, ¿¡sd¿asfl?sf!?, ¿"lajsldflj"?, ¿//sdasdf?, ¿4646?, ¿/*sdfsaf/*sdfsfas*/sadf*/?
+  ¡sf}fa!
+ _¡sf}fa!, ¡sf}fa!_
+ #¡sf}fa!, ¡sf}fa!#
+  ¡¡sf}fa!!
+ _¡¡sf}fa!!, ¡¡sf}fa!!_
+ #¡¡sf}fa!!, ¡¡sf}fa!!#
+    ¡!
+   ¡¡!!
+  ¡¡¡!!!
+ ¡¡¡¡!!!!
+ ¡¡¡¡!!!! !
+ ¡¡¡¡!!!! !!
+    ¡!!
+   ¡¡!!!!
+    ¡¡!
+   ¡¡¡¡!!-
+  ¡Nota:! ,  ¡sf\! \fa! ,  ¡Nota: \!!  ,  ¡c'sfsg'! ,  ¡¿sadf?! ,  ¡¿sd  ¡asfl!  sf?! , ¡"lajsldflj"!, ¡//sdasdf!, ¡4646!, ¡/*sdfsaf/*sdfsfas*/sadf*/!
+ ¡¡Nota:!!, ¡¡sf\!!\fa!!, ¡¡Nota:\!!!!, ¡¡c'sfsg'!!, ¡¡¿sadf?!!, ¡¡¿sd ¡¡asfl!! sf?!!, ¡"lajsldflj"!, ¡//sdasdf!, ¡4646!, ¡/*sdfsaf/*sdfsfas*/sadf*/!
+¡¡¡Nota:!!!                                                     ¡¡¿sd  ¡asfl!  sf?!!
+  ¿sf}fa?
+ _¿sf}fa?, ¿sf}fa?_
+ ¿¿sf}fa??
+     ¿?
+    ¿¿??
+   ¿¿¿???
+ ¿¿¿¿????
+ ¿¿¿¿???? ?
+ ¿¿¿¿???? ??
+    ¿??
+   ¿¿????
+    ¿¿?
+   ¿¿¿¿??-
+  ¿Nota:? ,  ¿sf\? \fa? ,  ¿Nota: \?? ,  ¿c'sfsg'? ,  ¿¡sadf!? ,  ¿¡sd  ¿asfl?  sf!? ,  ¿"lajsldflj"? ,  ¿//sdasdf? , ¿4646?, ¿/*sdfsaf/*sdfsfas*/sadf*/?
+ ¿¿Nota:??, ¿¿sf\??\fa??, ¿¿Nota:\????, ¿¿c'sfsg'??, ¿¿¡sadf!??, ¿¿¡sd ¿¿asfl?? sf!??, ¿¿"lajsldflj"??, ¿¿//sdasdf??, ¿4646?, ¿/*sdfsaf/*sdfsfas*/sadf*/?
+¿¿¿Nota:???                                                     ¿¿¡sd  ¿asfl?  sf!??
 }
 
 Código{
 	
 }Código
 
-Tópicos{
- 15 !)   15
- ab ·)   asdf
- ab #)   asdf
- 15 235) 15
- 15 ?) 15
- Listado L{
+Itemizadores{
+!)
+ ·)
+_?) , _ ?) , _?) , ?)_ , #) , $)
+ 15 •) 15
+58) 58) (58)
+ 9)  9) ( 9)
+2.5) 2.5) ( 2.5)
+ 45.89) 45.89) ( 45.89)
+a) a) (a)
+ b)   ( b)
+c.d) c.d) (c.d)
+ c.d)    ( c.d)
+}
+Listado L{
 	 item1  Descripcion c'sdñjlñ' sdfs.sdfsaf.
-	 2item		Descripcion Notas
-	 #$sldfjlsdjf		Descripcion ¿safdfg?
-	 ()=?=)		Descripcion 'asdfsfd'
-	 _		Descripcion ¡asdff!
-	 16546		Descripcion //sdfsdf
-	 16546)		Descripcion /*
-	 asdfsdf
-	 */
-	 //dsfsfg
-	 /*asdfsfd
-	 asfdsafd
-	 */
+	2item		Descripcion Notas:
+	Notas:		{[()]}
+	#$sldfjlsdjf		Descripcion ¿safdfg?
+	()=?=)		Descripcion 'asdfsfd'
+	_		Descripcion ¡asdff!
+	16546		Descripcion //sdfsdf
+	16546)		Descripcion /*
+	asdfsdf
+	*/
+	//dsfsfg
+	/*asdfsfd
+	asfdsafd
+	*/
 	 ¿16546?		Descripcion
-	 ¡16546!		Descripcion
-	 "sdfjg"		Descripcion
-	 "sdfjg sdfsg"		Descripcion
-	 'sdfjg sdfsg'		Descripcion  "
+	¡16546!		Descripcion
+	"sdfjg"		Descripcion
+	"sdfjg sdfsg"		Descripcion
+	'sdfjg sdfsg'		Descripcion  
  }L
 }
 
 Compactos{
   https://gcthesoftwareengineer.com/2017/01/how-to-create-custom-syntax-highlighting-in-a-visual-studio-code-extension/
-	"C:\Users\jonah\.vscode\extensions"
-	"c:\Users\jonah\.vscode\extensions"
-	"D:\Users\jonah\.vscode\extensions"
-	"d:\Users\jonah\.vscode\extensions"
-	".\jonah\.vscode\extensions"
-	"..\jonah\.vscode\extensions"
-	"...\jonah\.vscode\extensions"
-	"Z:\Users\jonah\.vscode\extensions"
-	"Ñ:\Users\jonah\.vscode\extensions"
+"C:\Users\jonah\.vscode\" no quiero que esto forme parte del PATH "Agrego más símbolos \""
+	"C:\Users\jonah\.vscode" no quiero que esto forme parte del PATH "Agrego más símbolos \""
+	"C:\Users\jonah\.vscode\" no quiero que esto forme parte del PATH "Agrego más símbolos \""
+	"c:\Users\jonah\.vscode"
+	"D:\Users\jonah\.vscode"
+	"d:\Users\jonah\.vscode\" Tengo que cerrar el String"
+	"Z:\Users\jonah\.vscode"
+	"Ñ:\Users\jonah\.vscode"
+	".\jonah\.vscode"
+	"..\jonah\.vscode"
+	".\jonah\.vscode\"
+	"..\jonah\.vscode\"
+	"...\jonah\.vscode"
 }
 
 Comentarios{
-	// asdjfsdlfj "asd", sf.sff. P'sfsfsf', Ctrl+algo  , "C:\Users\jonah\.vscode\extensions", https://gcthesoftwareengineer.com/2017/01/how-to-create-custom...
+	// asd "asd", sf.sff. P'sfsfsf', Ctrl+algo  , "C:\Users\jonah\.vscode\extensions", https://gcthesoftwareengineer.com/2017/01/how-to-create-custom...
 	/*
-	asdlkfjsñlf
-	/* sldkjflñdfñlsd */
+	asd
+	/* sldk */
 	sdfgh
 	// dsafhsdf
 	/**/
@@ -90,6 +208,14 @@ Operadores{
 	132 +- 9871		132+-9871		dfg+-aab
 	45 * 8				45*8				dfg*aab
 	12 / 9				12/9				dfg/aab
+	"a" & "b"    "a"&"b"
+	'a' & 'b'    'a'&'b'
+	12 = 9				12=9				dfg=aab
+	'a' = 'b'    'a'='b'
+	 12 +=  9      12+=9    12=+9    dfg+=aab
+	'a' += 'b'    'a'+='b' 'a'=+'b'
+	 12 ==  9      12==9    dfg==aab
+	'a' == 'b'    'a'=='b'
 }
 
 C#{
@@ -109,48 +235,181 @@ C#{
 	}
 }C#
 
-Tipos y variables{
-	sadfg.asdfsdf.safd
-	.sadfg.asdfsdf.safd
-	sadfg.asdfsdf.safd.
-	C'sadfg.asdfsdf.safd'
-	C'asdfsdf'
-	C"asdfsdf"
-	P'sadfg'
-	P"sadfg"
-	c'safdsd'
-	c"safdsd"
+miembros y tipos{
+	abc.abc.abc, abc.abc.abc. abc.abc; abc.abc<abc>, abc<abc>
+	.abc.abc.abc
 }
+
+Señaladores de tokens R{
+	C'abc.abc.abc', C'abc', C'abc<abc>', C'abc<abc<abc>>'
+	C"abc.abc.abc", C"abc"
+	P'abc', P"abc"
+	c'abc', c"abc"
+	F'abc', F'abc()'
+	E'abc'
+	k'abc'
+	I'abc'
+}R
 
 Regex{
 	rgx{ asdfg }rgx
 }
 -----------------------------------------
 Atajos{
-Win+U	    Open Ease of Access Center
-	    Win+U	    Open Ease of Access Center
-Ctrl+Shift	        Switch the keyboard layout when multiple keyboard layouts are available
-    Ctrl+Shift	        Switch the keyboard layout when multiple keyboard layouts are available
-    Shift+Delete	Delete the selected item without moving it to the Recycle Bin first
+Win+U	 blabla
+	Win+U 	_
+	Win+ 	_
+	Win+Num Lock. 	_
+	Win+cualquier cosa que no use \t o \ {2,} 	_
+	Ctrl+sigo con un espacio _
+	Ctrl+sigo con un tab	_
+	Ctrl+sigo con 2 espacios  _
+	_ Win+U	_ Win+U	_
+	_ Win+U _ Win+U _
+	_ Win+U _ Win+U  _
+	!) Win+U	_
+	   (+Shift)	_
+	   (,+Alt)	_
+	!) (+Ctrl)		  Switch to the last active window of the app.
+	_"Alt+algo"_
+	_"alt+algo 2"_
+	_"alt+algo  3"_
+	_"alt+algo \" 4"_ Fuerzo cierre string"
+
+F1	    Display Help
     F1	    Display Help
- !) Win+Number 	Open the desktop and start the app pinned to the taskbar in the position indicated by the number. If the app is already running, switch to that app.
- !)   (+Shift)	  Start a new instance of the app.
- !)   (+Ctrl)		  Switch to the last active window of the app.
- !)   (+Alt)	  Open the Jump List for the app.
-      (+Ctrl+Shift)	Start a new instance of the app as an administrator.
-	Ctrl+sigo con tab	sdfsa
-	Ctrl+sigo con espacios  sdfsa
+ !) F1	    Display Help
+ !) "F1"	    Display Help
 }
 
 Formatos fuente {
 	Itálica{
-		~'sdfsdfsf' sdfsf ~'sdf\'sfs' sfdsdfs ~'adfsf ¿ ' d ' a ' ?' asdfsf
+		  Comparo
+		~'Comparo'
+		~'
+		  Comparo (no es multilínea)
+		'
+		~' 1º ita ~' 2º ita ' quiero cerrar 1º ita '
+		~'¿quiero esto como pregunta ¡_! ' quiero esto como string ' a ' ? Notas: 456 \' \¡sd\'ff!'
 		¿ df ~'sdff asdf' ?
-		·'sdfsdfsf' sdfsf ·'sdf\'sfs' sfdsdfs ·'adfsf ¿ ' d ' a ' ?' asdfsf
-		¿ df ·'sdff asdf' ?
+		'quiero esto como string~'quiero esto como string formateado' --', 'quiero esto como string\~'quiero esto como no string no formateado
+		~' 'quiero esto como string formateado' 'Fuerzo cierre string'
+	}
+	Bold{
+		  Comparo
+		•'Comparo'
+		•'
+		  Comparo (sí es multilínea)
+		'
+		•' 1º bol •' 2º bol ' quiero cerrar 1º bol '
+		•'adfsf ¿ ' d ' a ' ? Notas: 456 \' \¡sd\'ff!'
+		¿ df •'sdff asdf' ?
+		'quiero esto como string•'quiero esto como string formateado' --', 'quiero esto como string\•'quiero esto como no string no formateado
+		•' 'quiero esto como string formateado' 'Fuerzo cierre string'
+	}
+	Underline{
+		_'Comparo'
+		_'
+		  Comparo (sí es multilínea)
+		'
+		_' 1º und _' 2º und ' quiero cerrar 1º und '
+		_'adfsf ¿ ' d ' a ' ? Notas: 456 \' \¡sd\'ff!'
+		¿ df _'sdff asdf' ?
+		'quiero esto como string_'quiero esto como string formateado' --', 'quiero esto como string\~'quiero esto como no string no formateado
+		_' 'quiero esto como string formateado' 'Fuerzo cierre string'
+	}
+	Combinaciones{
+		     Comparo
+		  ~•'Comparo'
+		  •~'Comparo'
+		~' •'Comparo' quiero cerrar italic '
+		•' ~'Comparo' quiero cerrar bold    '
+
+		  ~_'Comparo'
+		  _~'Comparo'
+		~' _'Comparo' quiero cerrar italic   '
+		_' ~'Comparo' quiero cerrar underline '
+
+		  •_'Comparo'
+		  _•'Comparo'
+		•' _'Comparo' quiero cerrar bold   '
+		_' •'Comparo' quiero cerrar underline '
+
+		 ~•_'Comparo'
+		~' a •' b _' c ' ' _~' d ' •_' e ' '
+	}
+	Ninguno{
+		     Comparo   Comparo
+		~•_' Comparo -'Comparo' '
 	}
 }
 
-{
+Evitando que una estructura interior cierre una llave{
 	"}", ¿}?, ¡}!, '}', /*}*/, /*/*}*/*/, rgx{ } }rgx, //}
+}
+
+Pruebas{
+	a'a'
+	a'a.w'
+	a'a<b>'
+	a'a.w<b>'
+	a'a<b.w>'
+	a'a.w<b.w>'
+	a'a<b<c>>'
+	a'a.w<b<c>>'
+
+	Hipótesis sobre capturas en recurción {
+		a<b>
+		1)
+			'  a  '
+			' int '
+		2)
+			'  a   < '
+			' int  1 '
+			3)
+				'  a   <  b  ' mueren "int" anteriores
+				' tod  1 int '
+			4)
+				'  a    <   b  | ' mueren "1", "gen" y "2" anteriores
+				' tod  tod int   '
+		5)
+			'  a    <   b•   ' completo "gen"
+			' tod  tod gen   '
+		6)
+			'  a    <   b• > ' mueren "2" anteriores
+			' tod  tod gen 2 ' <- "coincide con lo que se veía"
+
+
+		a<b<c>>
+		1)
+			'  a  '
+			' int '
+		2)
+			'  a   < '
+			' int  1 '
+			3)
+				'  a   <  b  ' mueren "int" anteriores
+				' tod  1 int '
+			4)
+				'  a   <   b  < ' mueren "1" anteriores
+				' tod tod int 1 '
+				5)
+					'  a   <   b  <  c  ' mueren "int" anteriores
+					' tod tod tod 1 int '
+				6)
+					'  a   <   b   <   c  | ' mueren "1", "gen" y "2" anteriores
+					' tod tod tod tod int   '
+			7)
+				'  a   <   b   <   c• ' completo "gen"
+				' tod tod tod tod gen '
+			8)
+				'  a   <   b   <   c• > ' mueren "2" anteriores
+				' tod tod tod tod gen 2 '
+		9)
+			'  a   <   b   <   c  >• ' completo "gen". mueren "gen" anteriores
+			' tod tod -----gen-----  '
+		10)
+			'  a   <   b   <   c  >• > ' mueren "2" anteriores
+			' tod tod -----gen-----  2 '  <- "¡No! coincide con lo que se veía"
+	}
 }

@@ -2,244 +2,431 @@
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "Notas",
 	"patterns": [
-		{
-			"include": "#palabras_clave"
-		},{
-			"include": "#tópicos"
-		},{
-			"include": "#atajo"
-		},{
-			"include": "#numeros"
-		},{
-			"include": "#compactos"
-		},{
-			"include": "#strings"
-		},{
-			"include": "#entre_puntuaciones"
-		},{
-			"include": "#variables_y_tipos"
-		},{
-			"include": "#comentarios"
-		},{
-			"include": "#operadores"
-		},{
-			"include": "#regex"
-		},{
-			"include": "#codigos"
-		},{
-			"include": "#formato_fuente"
-		}
+		{"include": "#siempre destacan"},
+		{"include": "#operadores"},
+		
+		{"include": "#tipo string en línea"},
+		{"include": "#tipo comentario en línea"},
+		{"include": "#regex"},
+
+		{"include": "#codigos"},
+		{"include": "#tipo string en bloque"},
+		{"include": "#tipo comentario en bloque"},
+		{"include": "#lista"},
+		{"include": "#formato fuente"},
+
+		{"include": "#Prueba"}
 	],
 	"repository": {
-		"palabras_clave": {
-			"patterns": [{
-				"name": "palabra.clave.n.notasid",
-				"match": "(?<!\\w)(Notas?:?|Pendientes?:|Command\\ ?=|\"command\"|\"when\")(?!\\w)"
-			}]
-		},
-		"strings": {
+		"siempre destacan":{ "patterns": [
+			{"include": "#URL"},
+			{"include": "#itemizadores"},
+			{"include": "#palabras clave"},
+			{"include": "#símbolos clave"},
+			{"include": "#numeros"}
+		]},
+		"tipo string en línea": { "patterns": [
+			{"include": "#URL"},
+			{"include": "#itemizadores"},
+			{"include": "#palabras clave"},
+			{"include": "#símbolos clave"},
+			{"include": "#atajo"},
+			{"include": "#miembros y tipos"},
+			{"include": "#señaladores de tokens"},
+			{"include": "#entre puntuaciones"}
+		]},
+		"tipo string en bloque": {
 			"name": "strings.notasid",
-			"patterns": [{
-				"name": "string.quoted.double.notasid",
-				"begin": "\"",
-				"end": "\"",
-				"patterns": [
-					{
-						"name": "constant.character.escape.dou.notasid",
-						"match": "\\\\."
-					}
-				]
-			},{
-				"name": "string.quoted.single.notasid",
-				"begin": "(?<!\\w)'",
-				"end": "'",
-				"patterns": [
-					{
-						"name": "constant.character.escape.sin.notasid",
-						"match": "\\\\."
-					}
-				]
-			}]
-		},
-		"comentarios":{
-			"patterns": [{
-					"name":"comment.linea.notasid",
-					"match": "\/\/(.*)$",
-					"captures": {"1":{"patterns": [{"include": "#palabras_clave"},
-																				 {"include": "#atajo"},
-																				 {"include": "#compactos"},
-																				 {"include": "#strings"},
-																				 {"include": "#variables_y_tipos"}]}}
-				},{
-					"name":"comment.bloque.notasid",
-					"begin": "/\\*",
-					"end": "\\*/",
-					"patterns": [{
-							"name":"comment.destacado.n.bloque.notasid",
-							"match": "\/\/.*$"
-						},{
-							"name":"comment.destacado.n.bloque.notasid",
-							"begin": "/\\*",
-							"end": "\\*/"
-						}]
-				}]
-		},
-		"regex":{
-			"patterns": [{
-					"name":"constant.regexp",
-					"match": "rgx\\{\\s(.+?)\\s\\}rgx",
-					"captures": {
-						"1":{ "name":"regex.interior.n.notasid" }
-					}
-				}]
-		},
-		"tópicos":{
-			"patterns": [{
-					"name":"topico.n.simbolo.notasid",
-					"match": "(?<=\\s)[!#·?]\\)(?=\\s)"
-				},{
-					"name":"topico.n.numerado.notasid",
-					"match": "(?<=\\s)\\d+\\)(?=\\s)"
-				},{
-					"name":"listado.notasid",
-					"begin": "\\bL{",
-					"end": "}L\\b",
-					"patterns": [{
-						"name":"item.listado.n.notasid",
-						"match": "^\\s*(?!\\}L)\\S+"
-					},{
-						"include": "source.txt"
+			"patterns": [
+				{"name": "string.quoted.double.notasid",
+					"begin": "\"",
+					"end": "\"(?!\")",
+					"patterns": [
+						{"name": "constant.character.escape.dou.notasid",
+							"match": "\\\\\"|\"\""
+						},
+						{"include": "#formato fuente"
+					}]
+				},
+				{"name": "string.quoted.single.notasid",
+					"begin": "(?<!\\w)'",
+					"end": "'",
+					"patterns": [
+						{"name": "constant.character.escape.sin.notasid",
+							"match": "\\\\'|''"
+						},
+						{"include": "#formato fuente"
 					}]
 			}]
 		},
-		"atajo":{
-			"patterns": [{
-					"name":"string.atajo.n.comun.notasid",
-					"match": "(?<=\\s|^)((Ctrl|Shift|Mayús|Alt|Win)\\+)+.+?(?=\\t|\\s{2,})"
-				},{
-					"name":"string.atajo.n.adicional.notasid",
-					"match": "(?<=\\s|^)\\(,?\\+?(Ctrl|Shift|Mayús|Alt|Win)(\\+?|\\+(Ctrl|Shift|Mayús|Alt|Win)\\+?)*\\)(?=\\s)"
-				},{
-					"name":"string.atajo.n.Fn.notasid",
-					"match": "^\\s*F(\\d|1[012])\\s"
-			}]
-		},
+		"tipo string": { "patterns": [
+			{"include": "#tipo string en línea"}, 
+			{"include": "#tipo string en bloque"}
+		]},
+		"siempre destacan + string en línea": { "patterns": [
+			{"include": "#siempre destacan"},
+			{"include": "#tipo string en línea"}
+		]},
+		"tipo comentario en línea":{
+			"name":"comment.linea.notasid",
+			"match": "\/\/(.*)$",
+			"captures": {"1":{"patterns": [
+				{"include": "#siempre destacan + string en línea"}
+		]}}},
+		"tipo comentario en bloque":{
+			"name":"comment.bloque.notasid",
+			"begin": "/\\*",
+			"end": "\\*/",
+			"patterns": [
+				{"name":"comment.destacado.n.bloque.notasid",
+					"match": "\/\/.*$"
+				},
+				{"name":"comment.destacado.n.bloque.notasid",
+					"begin": "/\\*",
+					"end": "\\*/"
+				},
+				{"include": "source.txt"}
+		]},
+		"tipo comentario": { "patterns": [
+			{"include": "#tipo comentario en línea"}, 
+			{"include": "#tipo comentario en bloque"}
+		]},
 		"numeros": {
 			"name": "constant.numeric.notasid",
-			"patterns": [{
-				"name": "constant.numeric.con.separador.de.miles.notasid",
-				"match": "\\b\\d{1,3}(,\\d{3})+(\\.[\\d_]+)?\\b"
-			},{
-				"name": "constant.numeric.sin.separador.de.miles.notasid",
-				"match": "\\b[\\d_]+(\\.[\\d_]+)?\\b"
+			"patterns": [
+				{"name": "constant.numeric.conSepDeMiles.monetario.notasid",
+					"match": "(?<!\\w)[$£]\\d{1,3}(,\\d{3})+(\\.[\\d_]+)?\\b|\\b\\d{1,3}(,\\d{3})+(\\.[\\d_]+)?[$£](?!\\w)"
+				},
+				{"name": "constant.numeric.conSepDeMiles.conUnidad.notasid",
+					"match": "\\b\\d{1,3}(,\\d{3})+(\\.[\\d_]+)?((hs|min|seg|[Kkm]?[GgLlMm]|[TGMK]?[Bb])\\b|''|[°'ºª%])"
+				},
+				{"name": "constant.numeric.conSepDeMiles.notasid",
+					"match": "\\b\\d{1,3}(,\\d{3})+(\\.[\\d_]+)?\\b"
+				},
+
+				{"name": "constant.numeric.sinSepDeMiles.monetario.notasid",
+					"match": "(?<!\\w)[$£](?!_)[\\d_]+(\\.[\\d_]+)?\\b|\\b(?!_)[\\d_]+(\\.[\\d_]+)?\\b[$£](?!\\w)"
+				},
+				{"name": "constant.numeric.sinSepDeMiles.conUnidad.notasid",
+					"match": "\\b(?!_)[\\d_]+(\\.[\\d_]+)?((hs|min|seg|[Kkm]?[GgLlMm]|[TGMK]?[Bb])\\b|''|[°'ºª%])"
+				},
+				{"name": "constant.numeric.sinSepDeMiles.notasid",
+					"match": "\\b(?!_)[\\d_]+(\\.[\\d_]+)?\\b"
+				},
+
+				{"name": "constant.numeric.hexadecimal.notasid",
+					"match": "\\b0x[\\d_a-fA-F]+\\b"
 			}]
 		},
-		"compactos":{
-			"patterns": [{
-					"name":"string.link.n.notasid",
+		"palabras clave": {
+			"name": "palabra.clave.n.string.notasid",
+			"match": "(?<!\\w)(Notas?:|Pendientes?:|Soluci(ón|ones):|(?<com>\"|)Command Palette\\k<com>|VS( ?Code|C| ?2019)|Command ?=|\"command\"|\"when\")(?!\\w)"
+		},
+		"símbolos clave": {
+			"patterns": [
+				{"name": "palabra.clave.n.string.simbolo-flecha.notasid",
+					"match": "(←)?-+(?(1)→?|→)"
+				},
+				{"name": "simbolos.clave.bien.n.string.notasid",
+					"match": "\\([○☺☻]\\)"
+				},
+				{"name": "simbolos.clave.mal.n.string.notasid",
+					"match": "\\(×\\)"
+				}]
+		},
+		"regex":{
+			"name":"constant.regexp",
+			"match": "rgx\\{\\s(.+?)\\s\\}rgx",
+			"captures": { "1":{ "name":"regex.interior.n.notasid" } }
+		},
+		"itemizadores":{
+			"patterns": [
+				{"name":"itemizador.n.string.simbolo.notasid",
+					"match": "(?<=\\s|^)[·•!?#$]\\)(?=\\s)"
+				},
+				{"name":"itemizador.n.string.alfanumerico.notasid",
+					"match": "((?<=^\\s*)|\\()\\w(\\.\\w)*\\)(?=\\s)"
+			}]
+		},
+		"lista":{
+			"name":"listado.notasid",
+			"begin": "\\bL{",
+			"end": "}L\\b",
+			"patterns": [
+				{"name":"itemizador.listado.n.string.notasid",
+					"match": "(?<=^\\s*)(?!\\}L)\\S.*?(?=(\\t| {2,}|$))"
+				},
+				{"include": "source.txt"
+			}]
+		},
+		"atajo":{
+			"patterns": [
+				{"name":"atajo.n.string.comun.notasid",
+					"match": "(?<=\\s|^)((Ctrl|Shift|Mayús|Alt|Win)\\+)+.+?(?=\\t|\\s{2,})"
+				},
+				{"name":"atajo.n.string.adicional.notasid",
+					"match": "(?<=\\s|^)\\(,?\\+?(Ctrl|Shift|Mayús|Alt|Win)(\\+?|\\+(Ctrl|Shift|Mayús|Alt|Win)\\+?)*\\)(?=\\s)"
+				},
+				{"name":"atajo.n.string.Fn.notasid",
+					"match": "^\\s*F(\\d|1[012])(?=\\t|\\s{2,})"
+				},
+				{"name":"atajo.n.string.comun.encomillado.notasid",
+					"match": "\"(([Cc]trl|[Ss]hift|[Mm]ayús|[Aa]lt|[Ww]in)\\+)+[^\"]+\""
+				},
+				{"name":"atajo.n.string.Fn.encomillado.notasid",
+					"match": "\"F(\\d|1[012])\""
+			}]
+		},
+		"URL":{
+			"patterns": [
+				{"name":"link.n.string.notasid",
 					"match":"\\b(http|https|ftp|file)://\\S+\\b/?"
-				},{
-					"name":"string.path.n.notasid",
-					"match":"(?<!\\w)\"([A-Z]:|\\.\\.?)\\\\.+\""
+				},
+				{"name":"path.n.string.notasid",
+					"match":"(?<!\\w)\"([A-Z]:|\\.\\.?)\\\\.+?\""
 				}
 			]
 		},
-		"entre_puntuaciones":{
-			"patterns": [{
-					"name":"string.exclamacion.n.notasid",
-					"match": "(?<!\\w)¡(.+?)(?<!\\\\)!(?!\\w)",
+		"entre puntuaciones":{
+			"patterns": [
+				{"name":"exclamacion.n.string.notasid",
+					"match": "(?<!\\w|¡)¡(?!¡)(.*?)(?<!\\\\|!)!(?!\\w|!)",
 					"captures": {
-						"1":{ "patterns": [{
-										"include": "source.txt"
-									},{
-										"name":"constant.character.escape",
-										"match": "\\\\\\!"
-								}]}
+						"1":{ "patterns": [
+						        {"include": "#siempre destacan + string en línea"
+						        },
+						        {"include": "#formato fuente"
+						        },
+						        {"name":"constant.character.escape",
+						        	"match": "\\\\\\!"
+						      }]}
 					}
-				},{
-					"name":"string.pregunta.n.notasid",
-					"match": "(?<!\\w)¿(.*?)(?<!\\\\)\\?(?!\\w)",
+				},
+				{"name":"EXCLAMACION.n.string.notasid",
+					"match": "(?<!\\w)¡{2,}(.*?)(?<!\\\\)!{2,}(?!\\w)",
 					"captures": {
-						"1":{ "patterns": [{
-										"include": "source.txt"
-									},{
-										"name":"constant.character.escape",
-										"match": "\\\\\\?"
-								}]}
+						"1":{ "patterns": [
+						        {"include": "#siempre destacan + string en línea"
+						        },
+						        {"include": "#formato fuente"
+						        },
+						        {"name":"constant.character.escape",
+						        	"match": "\\\\\\!!"
+						      }]}
+					}
+				},
+				{"name":"pregunta.n.string.notasid",
+					"match": "(?<!\\w|¿)¿(?!¿)(.*?)(?<!\\\\|\\?)\\?(?!\\w|\\?)",
+					"captures": {
+						"1":{ "patterns": [
+						        {"include": "#siempre destacan + string en línea"
+						        },
+						        {"include": "#formato fuente"
+						        },
+						        {"name":"constant.character.escape",
+						        	"match": "\\\\\\?"
+						      }]}
+					}
+				},
+				{"name":"PREGUNTA.n.string.notasid",
+					"match": "(?<!\\w)¿{2,}(.*?)(?<!\\\\)\\?{2,}(?!\\w)",
+					"captures": {
+						"1":{ "patterns": [
+						        {"include": "#siempre destacan + string en línea"
+						        },
+						        {"include": "#formato fuente"
+						        },
+						        {"name":"constant.character.escape",
+						        	"match": "\\\\\\?\\?"
+						      }]}
 					}
 			}]
 		},
-		"variables_y_tipos":{
-			"patterns": [{
-					"name":"clase.n.conexion.por.puntos.notasid",
-					"match": "\\b\\w+(\\.\\w+)+\\b"
-				},{
-					"name":"clase.n.marcado.notasid",
-					"match": "\\bC'\\w+(\\.\\w+)*'"
-				},{
-					"name":"emphasis.clase.n.marcado.notasid",
-					"match": "\\bC\"\\w+(\\.\\w+)*\""
-				},{
-					"name":"support.type.property-name.por.comenzar.con.punto.notasid",
+		"miembros y tipos":{
+			"patterns": [
+				{"name":"clase.n.conexion.por.puntos.notasid",
+					"match": "(?x)\\b \\w+(?:\\.\\w+)+ (< (?<rec> \\w+(?:\\.\\w+)* (?:< \\g<rec> >)? ) >)?(?!\\w)",
+					"captures": {
+						"1": { "patterns": [
+							{"name":"operador.n.separaTipoGenerico.notasid",
+								"match": "[<>]"}
+						]}
+					}
+				},
+				{"name":"support.type.property-name.por.comenzar.con.punto.notasid",
 					"match": "\\.\\w+(\\.\\w+)+\\b"
-				},{
-					"name":"support.type.property-name.marcado.notasid",
-					"match": "\\bP'\\w+(\\.\\w+)*'"
-				},{
-					"name":"propiedad.ita.n.marcado.notasid",
-					"match": "\\bP\"\\w+(\\.\\w+)*\""
-				},{
-					"name":"constante.n.marcado.notasid",
-					"match": "\\bc'\\w+(\\.\\w+)*'"
-				},{
-					"name":"constante.ita.n.marcado.notasid",
-					"match": "\\bc\"\\w+(\\.\\w+)*\""
+			}]
+		},
+		"señaladores de tokens":{
+			"patterns": [
+				{"name":"clase.n.senialado.notasid",
+					"match": "(?x)\\b(C')(?<rec> \\w+(?:\\.\\w+)* (?:< \\g<rec> >)? )(')",
+					"captures": {
+						"2": { "patterns": [
+							{"name":"operador.n.separaTipoGenerico.notasid",
+								"match": "[<>]"}
+						]},
+						"1": {"name":"ocultar.n.notasid"},
+						"3": {"name":"ocultar.n.notasid"}
+					}
+				},
+				{"name":"clase.ita.n.senialado.notasid",
+					"match": "(?x)\\b(C\")(?<rec> \\w+(?:\\.\\w+)* (?:< \\g<rec> >)? )(\")",
+					"captures": {
+						"2": { "patterns": [
+							{"name":"operador.n.separaTipoGenerico.notasid",
+								"match": "[<>]"}
+						]},
+						"1": {"name":"ocultar.n.notasid"},
+						"3": {"name":"ocultar.n.notasid"}
+					}
+				},
+				{"name":"support.type.property-name.senialado.notasid",
+					"match": "\\b(P')\\w+(?:\\.\\w+)*(')",
+					"captures": {
+						"1": {"name":"ocultar.n.notasid"},
+						"2": {"name":"ocultar.n.notasid"}
+					}
+				},
+				{"name":"propiedad.ita.n.senialado.notasid",
+					"match": "\\b(P\")\\w+(?:\\.\\w+)*(\")",
+					"captures": {
+						"1": {"name":"ocultar.n.notasid"},
+						"2": {"name":"ocultar.n.notasid"}
+					}
+				},
+				{"name":"constante.n.senialado.notasid",
+					"match": "\\b(c')\\w+(?:\\.\\w+)*(')",
+					"captures": {
+						"1": {"name":"ocultar.n.notasid"},
+						"2": {"name":"ocultar.n.notasid"}
+					}
+				},
+				{"name":"constante.ita.n.senialado.notasid",
+					"match": "\\b(c\")\\w+(?:\\.\\w+)*(\")",
+					"captures": {
+						"1": {"name":"ocultar.n.notasid"},
+						"2": {"name":"ocultar.n.notasid"}
+					}
+				},
+				{"name":"entity.name.function.senialado.notasid",
+					"match": "\\b(F')\\w+(?:\\.\\w+)*(?:\\(\\))?(')",
+					"captures": {
+						"1": {"name":"ocultar.n.notasid"},
+						"2": {"name":"ocultar.n.notasid"}
+					}
+				},
+				{"name":"Evento.n.senialado.notasid",
+					"match": "\\b(E')\\w+(?:\\.\\w+)*(')",
+					"captures": {
+						"1": {"name":"ocultar.n.notasid"},
+						"2": {"name":"ocultar.n.notasid"}
+					}
+				},
+				{"name":"palabra.clave.n.senialado.notasid",
+					"match": "\\b(k')\\w+(?:\\.\\w+)*(')",
+					"captures": {
+						"1": {"name":"ocultar.n.notasid"},
+						"2": {"name":"ocultar.n.notasid"}
+					}
+				},
+				{"name":"palabra.clave.ita.n.senialado.notasid",
+					"match": "\\b(k\")\\w+(?:\\.\\w+)*(\")",
+					"captures": {
+						"1": {"name":"ocultar.n.notasid"},
+						"2": {"name":"ocultar.n.notasid"}
+					}
+				},
+				{"name":"interface.n.senialado.notasid",
+					"match": "\\b(I')\\w+(?:\\.\\w+)*(')",
+					"captures": {
+						"1": {"name":"ocultar.n.notasid"},
+						"2": {"name":"ocultar.n.notasid"}
+					}
+				},
+				{"name":"interface.ita.n.senialado.notasid",
+					"match": "\\b(I\")\\w+(?:\\.\\w+)*(\")",
+					"captures": {
+						"1": {"name":"ocultar.n.notasid"},
+						"2": {"name":"ocultar.n.notasid"}
+					}
 			}]
 		},
 		"operadores":{
-			"patterns": [{
-					"name":"operador.n.aislado.notasid",
-					"match": "(?<=\\s)[+\\-*/%&]{1,2}(?=\\s|$)"
-				},{
-					"name":"operador.n.en.formula.notasid",
-					"match": "(?<=\\b[\\d_]+(\\.[\\d_]+)?\\b)[+\\-*/%&]{1,2}(?=\\b[\\d_]+(\\.[\\d_]+)?\\b)"
-				}]
+			"patterns": [
+				{"name":"operador.n.numerico.unico.notasid",
+					"match": "(?<=\\s|\\d)[+\\-*/%^=](?=\\s|\\d)"
+				},
+				{"name":"operador.n.numerico.multiple.notasid",
+					"match": "(?<=\\s|\\d)([+\\-*=]{2}|[/&%]=)(?=\\s|\\d)"
+				},
+				{"name":"operador.n.paraString.unico.notasid",
+					"match": "(?<=\\s|\"|')[&+=]=?(?=\\s|\"|')"
+			}]
 		},
 		"codigos":{
-			"patterns": [{
-					"name":"generico.n.notasid",
+			"patterns": [
+				{"name":"generico.n.notasid",
 					"begin": "Código{",
 					"end": "}Código"
-				},{
-					"name":"codigo.csharp.notasid",
+				},
+					{"name":"codigo.csharp.notasid",
 					"begin": "C#{",
 					"end": "}C#",
 					"patterns": [{"include": "source.cs"}]
 				}]
 		},
-		"formato_fuente":{
-			"patterns": [{
-					"name":"emphasis",
-					"begin": "(?<=\\s|^)~'",
+		"formato fuente":{
+			"patterns": [
+				{"name":"formato.comun",
+					"begin": "-'",
 					"end": "'",
-					"patterns": [{
-						"name":"constant.character.escape",
-						"match": "\\\\'"
-					},{
-						"include": "source.txt"
-					}]
-			},{
-					"name":"strong",
-					"begin": "(?<=\\s|^)[·]'",
+					"patterns": [{ "include": "#dentro de formato" }]
+				},
+				{"name":"emphasis",
+					"begin": "~'",
 					"end": "'",
-					"patterns": [{
-							"name":"constant.character.escape",
-							"match": "\\\\'"
-						},{
-							"include": "source.txt"
-					}]
+					"patterns": [{ "include": "#dentro de formato" }]
+				},
+				{"name":"strong",
+					"begin": "•'",
+					"end": "'",
+					"patterns": [{ "include": "#dentro de formato" }]
+				},
+				{"name":"markup.underline",
+					"begin": "_'",
+					"end": "'",
+					"patterns": [{ "include": "#dentro de formato" }]
+				},
+				{"name":"emphasis.strong",
+					"begin": "(~•|•~)'",
+					"end": "'",
+					"patterns": [{ "include": "#dentro de formato" }]
+				},
+				{"name":"emphasis.markup.underline",
+					"begin": "(~_|_~)'",
+					"end": "'",
+					"patterns": [{ "include": "#dentro de formato" }]
+				},
+				{"name":"strong.markup.underline",
+					"begin": "(•_|_•)'",
+					"end": "'",
+					"patterns": [{ "include": "#dentro de formato" }]
+				},
+				{"name":"emphasis.strong.markup.underline",
+					"begin": "(~•_|~_•|•~_|•_~|_~•|_•~)'",
+					"end": "'",
+					"patterns": [{ "include": "#dentro de formato" }]
 			}]
-		}
+		},
+		"dentro de formato":{
+			"patterns": [
+				{"name":"constant.character.escape",
+					"match": "\\\\'"
+				},
+				{"include": "source.txt"}]
+		},
+		"Prueba":{}
 	},
 	"scopeName": "source.txt"
 }

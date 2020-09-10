@@ -1,7 +1,7 @@
 {
     "comments": {
         // symbol used for single line comment. Remove this entry if your language does not support line comments
-        //"lineComment": "//",
+        "lineComment": "//",
         // symbols used for start and end a block comment. Remove this entry if your language does not support block comments
         "blockComment": [ "/*", "*/" ]
     },
@@ -9,9 +9,9 @@
     "brackets": [
         ["{", "}"],
         ["[", "]"],
-        ["(", ")"],
-        ["C#{", "}C#"],
-        ["L{", "}L"]
+        ["(", ")"]//,
+        // ["C#{", "}C#"],
+        // ["L{", "}L"]
     ],
     // symbols that are auto closed when typing
     "autoClosingPairs": [
@@ -25,7 +25,22 @@
         ["¡", "!"],
         ["rgx{", " }rgx"],
         ["C#{", "}C#"],
-        ["L{", "}L"]
+        ["L{", "}L"],
+        ["R{", "}R"],
+        ["c'", "'"],
+        ["c\"", "\""],
+        ["C'", "'"],
+        ["C\"", "\""],
+        ["E'", "'"],
+        ["E\"", "\""],
+        ["F'", "'"],
+        ["F\"", "\""],
+        ["I'", "'"],
+        ["I\"", "\""],
+        ["k'", "'"],
+        ["k\"", "\""],
+        ["P'", "'"],
+        ["P\"", "\""]
     ],
     // symbols that can be used to surround a selection
     "surroundingPairs": [
@@ -36,5 +51,11 @@
         ["'", "'"],
         ["¿", "?"],
         ["¡", "!"]
-    ]
+    ],
+    "folding": {
+        "markers": {
+            "start": "R{",
+            "end": "}R"
+        }
+    }
 }
