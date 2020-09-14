@@ -261,7 +261,7 @@
 		"señaladores de tokens":{
 			"patterns": [
 				{"name":"clase.n.senialado.notasid",
-					"match": "(?x)\\b(C')(?<rec> \\w+(?:\\.\\w+)* (?:< \\g<rec> >)? )(')",
+					"match": "(?x)\\b(C¨)(?<rec> \\w+(?:\\.\\w+)* (?:< \\g<rec> >)? )(¨)",
 					"captures": {
 						"2": { "patterns": [
 							{"name":"operador.n.separaTipoGenerico.notasid",
@@ -283,7 +283,7 @@
 					}
 				},
 				{"name":"support.type.property-name.senialado.notasid",
-					"match": "\\b(P')\\w+(?:\\.\\w+)*(')",
+					"match": "\\b(P¨)[^¨]+(¨)",
 					"captures": {
 						"1": {"name":"ocultar.n.notasid"},
 						"2": {"name":"ocultar.n.notasid"}
@@ -297,7 +297,7 @@
 					}
 				},
 				{"name":"constante.n.senialado.notasid",
-					"match": "\\b(c')\\w+(?:\\.\\w+)*(')",
+					"match": "\\b(c¨)[^¨]+(¨)",
 					"captures": {
 						"1": {"name":"ocultar.n.notasid"},
 						"2": {"name":"ocultar.n.notasid"}
@@ -311,14 +311,14 @@
 					}
 				},
 				{"name":"entity.name.function.senialado.notasid",
-					"match": "\\b(F')\\w+(?:\\.\\w+)*(?:\\(\\))?(')",
+					"match": "\\b(F¨)[^¨]+(¨)",
 					"captures": {
 						"1": {"name":"ocultar.n.notasid"},
 						"2": {"name":"ocultar.n.notasid"}
 					}
 				},
 				{"name":"Evento.n.senialado.notasid",
-					"match": "\\b(E')\\w+(?:\\.\\w+)*(')",
+					"match": "\\b(E¨)[^¨]+(¨)",
 					"captures": {
 						"1": {"name":"ocultar.n.notasid"},
 						"2": {"name":"ocultar.n.notasid"}
@@ -339,7 +339,7 @@
 					}
 				},
 				{"name":"interface.n.senialado.notasid",
-					"match": "\\b(I')\\w+(?:\\.\\w+)*(')",
+					"match": "\\b(I¨)[^¨]+(¨)",
 					"captures": {
 						"1": {"name":"ocultar.n.notasid"},
 						"2": {"name":"ocultar.n.notasid"}

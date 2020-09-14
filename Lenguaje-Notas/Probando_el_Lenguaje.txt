@@ -246,14 +246,14 @@ miembros y tipos{
 }
 
 Señaladores de tokens R{
-	C'abc.abc.abc', C'abc', C'abc<abc>', C'abc<abc<abc>>'
+	C¨abc.abc.abc¨, C¨abc¨, C¨abc<abc>¨, C¨abc<abc<abc>>¨
 	C"abc.abc.abc", C"abc"
-	P'abc', P"abc"
-	c'abc', c"abc"
-	F'abc', F'abc()'
-	E'abc'
+	P¨abc¨, P"abc"
+	c¨abc¨, c"abc"
+	F¨abc¨, F¨abc()¨, F¨asd(dff, sflññ)<sflñdf?s ffsñl¡ dfdsa! #& ¨
+	E¨abc¨
 	k'abc'
-	I'abc'
+	I¨abc¨
 }R
 
 Regex{
