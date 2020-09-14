@@ -137,9 +137,14 @@ Código{
 }Código
 
 Itemizadores{
-!)
+!) , ¡)
  ·)
-_?) , _ ?) , _?) , ?)_ , #) , $)
+_?) , _ ?) , _?) , ?)_ , ¿) , #) , $)
+ (!) , (·) , (¿)
+ ¡!) , ¿?)
+ ¡ !) , ¿ ?)
+ ¡ ?) !) , ¿ !) ?)
+ ¡ !) !) , ¿ ?) ?)
  15 •) 15
 58) 58) (58)
  9)  9) ( 9)
@@ -285,62 +290,62 @@ F1	    Display Help
 Formatos fuente {
 	Itálica{
 		  Comparo
-		~'Comparo'
-		~'
+		~¨Comparo¨
+		~¨
 		  Comparo (no es multilínea)
-		'
-		~' 1º ita ~' 2º ita ' quiero cerrar 1º ita '
-		~'¿quiero esto como pregunta ¡_! ' quiero esto como string ' a ' ? Notas: 456 \' \¡sd\'ff!'
-		¿ df ~'sdff asdf' ?
-		'quiero esto como string~'quiero esto como string formateado' --', 'quiero esto como string\~'quiero esto como no string no formateado
-		~' 'quiero esto como string formateado' 'Fuerzo cierre string'
+		¨
+		~¨ 1º ita ~¨ 2º ita ¨ quiero cerrar 1º ita ¨
+		~¨¿quiero esto como pregunta ¡_! ' quiero esto como string (×) ' a ¨ ? Notas: 456 \¨ \¡sd\¨ff!¨
+		¿ df ~¨quiero esto formateado¨ ?
+		'quiero esto como string~¨quiero esto como string formateado¨ --', 'quiero esto como string\~¨quiero esto como no string no formateado¨'
+		~¨ 'quiero esto como string formateado'¨
 	}
 	Bold{
 		  Comparo
-		•'Comparo'
-		•'
+		•¨Comparo¨
+		•¨
 		  Comparo (sí es multilínea)
-		'
-		•' 1º bol •' 2º bol ' quiero cerrar 1º bol '
-		•'adfsf ¿ ' d ' a ' ? Notas: 456 \' \¡sd\'ff!'
-		¿ df •'sdff asdf' ?
-		'quiero esto como string•'quiero esto como string formateado' --', 'quiero esto como string\•'quiero esto como no string no formateado
-		•' 'quiero esto como string formateado' 'Fuerzo cierre string'
+		¨
+		•¨ 1º bol •¨ 2º bol ¨ quiero cerrar 1º bol ¨ asdfdf
+		•¨adfsf ¿quiero esto como pregunta ¡_! ¨ quiero esto como string (×) ' a ¨ ? Notas: 456 \¨ \¡sd\¨ff!¨
+		¿ df •¨quiero esto formateado¨ ?
+		'quiero esto como string•¨quiero esto como string formateado¨ --', 'quiero esto como string\•¨quiero esto como no string no formateado (×)¨' sdf
+		•¨ 'quiero esto como string formateado'¨
 	}
 	Underline{
-		_'Comparo'
-		_'
+		_¨Comparo¨
+		_¨
 		  Comparo (sí es multilínea)
-		'
-		_' 1º und _' 2º und ' quiero cerrar 1º und '
-		_'adfsf ¿ ' d ' a ' ? Notas: 456 \' \¡sd\'ff!'
-		¿ df _'sdff asdf' ?
-		'quiero esto como string_'quiero esto como string formateado' --', 'quiero esto como string\~'quiero esto como no string no formateado
-		_' 'quiero esto como string formateado' 'Fuerzo cierre string'
+		¨
+		_¨ 1º und _¨ 2º und ¨ quiero cerrar 1º und ¨ sdfsf
+		_¨adfsf ¿quiero esto como pregunta ¡_! ¨ quiero esto como string (×) ' a ¨ ? Notas: 456 \¨ \¡sd\¨ff!¨
+		¿ df _¨quiero esto formateado¨ ?
+		'quiero esto como string_¨quiero esto como string formateado¨ --', 'quiero esto como string\~¨quiero esto como no string no formateado¨ (×)' sdf
+		_¨ 'quiero esto como string formateado'¨
 	}
 	Combinaciones{
 		     Comparo
-		  ~•'Comparo'
-		  •~'Comparo'
-		~' •'Comparo' quiero cerrar italic '
-		•' ~'Comparo' quiero cerrar bold    '
+		  ~•¨Comparo¨
+		  •~¨Comparo¨
+		~¨ •¨Comparo¨ quiero cerrar italic ¨
+		•¨ ~¨Comparo¨ quiero cerrar bold   ¨
 
-		  ~_'Comparo'
-		  _~'Comparo'
-		~' _'Comparo' quiero cerrar italic   '
-		_' ~'Comparo' quiero cerrar underline '
+		  ~_¨Comparo¨
+		  _~¨Comparo¨
+		~¨ _¨Comparo¨ quiero cerrar italic    ¨
+		_¨ ~¨Comparo¨ quiero cerrar underline ¨
 
-		  •_'Comparo'
-		  _•'Comparo'
-		•' _'Comparo' quiero cerrar bold   '
-		_' •'Comparo' quiero cerrar underline '
+		  •_¨Comparo¨
+		  _•¨Comparo¨
+		•¨ _¨Comparo¨ quiero cerrar bold   ¨
+		_¨ •¨Comparo¨ quiero cerrar underline ¨
 
-		 ~•_'Comparo'
-		~' a •' b _' c ' ' _~' d ' •_' e ' '
+		 ~•_¨Comparo¨
+		~¨ a •¨ b _¨ c ¨ ¨ _~¨ d ¨ •_¨ e ¨ ¨
 	}
 	Ninguno{
 		     Comparo   Comparo
-		~•_' Comparo -'Comparo' '
+		~•_¨ Comparo -¨Comparo¨ ¨
 	}
 }
 
@@ -349,15 +354,7 @@ Evitando que una estructura interior cierre una llave{
 }
 
 Pruebas{
-	a'a'
-	a'a.w'
-	a'a<b>'
-	a'a.w<b>'
-	a'a<b.w>'
-	a'a.w<b.w>'
-	a'a<b<c>>'
-	a'a.w<b<c>>'
-
+	
 	Hipótesis sobre capturas en recurción {
 		a<b>
 		1)

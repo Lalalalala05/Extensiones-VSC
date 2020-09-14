@@ -45,8 +45,10 @@
 						{"name": "constant.character.escape.dou.notasid",
 							"match": "\\\\\"|\"\""
 						},
+						{"include": "#siempre destacan"
+						},
 						{"include": "#formato fuente"
-					}]
+						}]
 				},
 				{"name": "string.quoted.single.notasid",
 					"begin": "(?<!\\w)'",
@@ -55,8 +57,10 @@
 						{"name": "constant.character.escape.sin.notasid",
 							"match": "\\\\'|''"
 						},
+						{"include": "#siempre destacan"
+						},
 						{"include": "#formato fuente"
-					}]
+						}]
 			}]
 		},
 		"tipo string": { "patterns": [
@@ -142,7 +146,13 @@
 		"itemizadores":{
 			"patterns": [
 				{"name":"itemizador.n.string.simbolo.notasid",
-					"match": "(?<=\\s|^)[·•!?#$]\\)(?=\\s)"
+					"match": "(?<=\\s|^)[·•#$]\\)(?=\\s)"
+				},
+				{"name":"pregunta.n.string.itemizador-simbolo.notasid",
+					"match": "(?<=\\s|^)[¿?]\\)(?=\\s)"
+				},
+				{"name":"exclamacion.n.string.itemizador-simbolo.notasid",
+					"match": "(?<=\\s|^)[¡!]\\)(?=\\s)"
 				},
 				{"name":"itemizador.n.string.alfanumerico.notasid",
 					"match": "((?<=^\\s*)|\\()\\w(\\.\\w)*\\)(?=\\s)"
@@ -244,17 +254,8 @@
 		},
 		"miembros y tipos":{
 			"patterns": [
-				{"name":"clase.n.conexion.por.puntos.notasid",
-					"match": "(?x)\\b \\w+(?:\\.\\w+)+ (< (?<rec> \\w+(?:\\.\\w+)* (?:< \\g<rec> >)? ) >)?(?!\\w)",
-					"captures": {
-						"1": { "patterns": [
-							{"name":"operador.n.separaTipoGenerico.notasid",
-								"match": "[<>]"}
-						]}
-					}
-				},
 				{"name":"support.type.property-name.por.comenzar.con.punto.notasid",
-					"match": "\\.\\w+(\\.\\w+)+\\b"
+					"match": "(?<=\\W)\\.\\w+(\\.\\w+)+\\b"
 			}]
 		},
 		"señaladores de tokens":{
@@ -379,50 +380,58 @@
 		"formato fuente":{
 			"patterns": [
 				{"name":"formato.comun",
-					"begin": "-'",
-					"end": "'",
+					"begin": "-¨",
+					"end": "¨",
+					"captures": {"0":{"name":"ocultar.n.notasid"}},
 					"patterns": [{ "include": "#dentro de formato" }]
 				},
 				{"name":"emphasis",
-					"begin": "~'",
-					"end": "'",
+					"begin": "~¨",
+					"end": "¨",
+					"captures": {"0":{"name":"ocultar.n.notasid"}},
 					"patterns": [{ "include": "#dentro de formato" }]
 				},
 				{"name":"strong",
-					"begin": "•'",
-					"end": "'",
+					"begin": "•¨",
+					"end": "¨",
+					"captures": {"0":{"name":"ocultar.n.notasid"}},
 					"patterns": [{ "include": "#dentro de formato" }]
 				},
 				{"name":"markup.underline",
-					"begin": "_'",
-					"end": "'",
+					"begin": "_¨",
+					"end": "¨",
+					"captures": {"0":{"name":"ocultar.n.notasid"}},
 					"patterns": [{ "include": "#dentro de formato" }]
 				},
 				{"name":"emphasis.strong",
-					"begin": "(~•|•~)'",
-					"end": "'",
+					"begin": "(~•|•~)¨",
+					"end": "¨",
+					"captures": {"0":{"name":"ocultar.n.notasid"}},
 					"patterns": [{ "include": "#dentro de formato" }]
 				},
 				{"name":"emphasis.markup.underline",
-					"begin": "(~_|_~)'",
-					"end": "'",
+					"begin": "(~_|_~)¨",
+					"end": "¨",
+					"captures": {"0":{"name":"ocultar.n.notasid"}},
 					"patterns": [{ "include": "#dentro de formato" }]
 				},
 				{"name":"strong.markup.underline",
-					"begin": "(•_|_•)'",
-					"end": "'",
+					"begin": "(•_|_•)¨",
+					"end": "¨",
+					"captures": {"0":{"name":"ocultar.n.notasid"}},
 					"patterns": [{ "include": "#dentro de formato" }]
 				},
 				{"name":"emphasis.strong.markup.underline",
-					"begin": "(~•_|~_•|•~_|•_~|_~•|_•~)'",
-					"end": "'",
+					"begin": "(~•_|~_•|•~_|•_~|_~•|_•~)¨",
+					"end": "¨",
+					"captures": {"0":{"name":"ocultar.n.notasid"}},
 					"patterns": [{ "include": "#dentro de formato" }]
 			}]
 		},
 		"dentro de formato":{
 			"patterns": [
 				{"name":"constant.character.escape",
-					"match": "\\\\'"
+					"match": "\\\\¨"
 				},
 				{"include": "source.txt"}]
 		},
