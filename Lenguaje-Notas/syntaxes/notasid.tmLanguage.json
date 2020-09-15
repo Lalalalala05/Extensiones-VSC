@@ -2,6 +2,7 @@
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "Notas",
 	"patterns": [
+		{"include": "#Marcadores de Regiones"},
 		{"include": "#siempre destacan"},
 		{"include": "#operadores"},
 		
@@ -123,13 +124,21 @@
 			}]
 		},
 		"palabras clave": {
-			"name": "palabra.clave.n.string.notasid",
-			"match": "(?<!\\w)(Notas?:|Pendientes?:|Soluci(ón|ones):|(?<com>\"|)Command Palette\\k<com>|VS( ?Code|C| ?2019)|Command ?=|\"command\"|\"when\")(?!\\w)"
+			"patterns": [
+				{"name": "palabra.clave.n.string.notasid",
+					"match": "(?<!\\w)(Notas?:|Pendientes?:|Soluci(ón|ones):|(?<com>\"|)Command Palette\\k<com>|VS( ?Code|C| ?201\\d)|Command ?=|\"command\"|\"when\")(?!\\w)"
+				},
+				{"name": "palabra.clave.n.string.nombre-lenguaje.notasid",
+					"match": "(?<![\\w}])(C(\\+\\+|#|Sharp)|XAML)(?![\\w{])"
+				}]
 		},
 		"símbolos clave": {
 			"patterns": [
-				{"name": "palabra.clave.n.string.simbolo-flecha.notasid",
-					"match": "(←)?-+(?(1)→?|→)"
+				{"name": "palabra.clave.n.string.simbolo-flecha-con-guion.notasid",
+					"match": "(←+)?-+(?(1)→*|→+)"
+				},
+				{"name": "palabra.clave.n.string.simbolo-flecha-sin-guion.notasid",
+					"match": "(←|→(?!←)){2,}"
 				},
 				{"name": "simbolos.clave.bien.n.string.notasid",
 					"match": "\\([○☺☻]\\)"
@@ -162,6 +171,7 @@
 			"name":"listado.notasid",
 			"begin": "\\bL{",
 			"end": "}L\\b",
+			"captures": { "0":{ "name": "ocultar.n" } },
 			"patterns": [
 				{"name":"itemizador.listado.n.string.notasid",
 					"match": "(?<=^\\s*)(?!\\}L)\\S.*?(?=(\\t| {2,}|$))"
@@ -255,7 +265,7 @@
 		"miembros y tipos":{
 			"patterns": [
 				{"name":"support.type.property-name.por.comenzar.con.punto.notasid",
-					"match": "(?<=\\W)\\.\\w+(\\.\\w+)+\\b"
+					"match": "(?<=\\W)\\.\\w+(\\.\\w+)*\\b"
 			}]
 		},
 		"señaladores de tokens":{
@@ -317,7 +327,7 @@
 						"2": {"name":"ocultar.n.notasid"}
 					}
 				},
-				{"name":"Evento.n.senialado.notasid",
+				{"name":"evento.n.senialado.notasid",
 					"match": "\\b(E¨)[^¨]+(¨)",
 					"captures": {
 						"1": {"name":"ocultar.n.notasid"},
@@ -374,12 +384,22 @@
 					{"name":"codigo.csharp.notasid",
 					"begin": "C#{",
 					"end": "}C#",
+					"captures": { "0":{ "name": "ocultar.n" } },
 					"patterns": [{"include": "source.cs"}]
-				}]
+				},
+				{"name":"codigo.xaml.notasid",
+				"begin": "XAML{",
+				"end": "}XAML",
+				"captures": { "0":{ "name": "ocultar.n" } },
+				"patterns": [
+					{"include": "text.dart.xaml"},
+					{"include": "#tipo comentario en línea"}
+				]
+			}]
 		},
 		"formato fuente":{
 			"patterns": [
-				{"name":"formato.comun",
+				{"name":"formato.comun.n",
 					"begin": "-¨",
 					"end": "¨",
 					"captures": {"0":{"name":"ocultar.n.notasid"}},
@@ -403,25 +423,25 @@
 					"captures": {"0":{"name":"ocultar.n.notasid"}},
 					"patterns": [{ "include": "#dentro de formato" }]
 				},
-				{"name":"emphasis.strong",
+				{"name":"emphasis.strong.n",
 					"begin": "(~•|•~)¨",
 					"end": "¨",
 					"captures": {"0":{"name":"ocultar.n.notasid"}},
 					"patterns": [{ "include": "#dentro de formato" }]
 				},
-				{"name":"emphasis.markup.underline",
+				{"name":"emphasis.markup.underline.n",
 					"begin": "(~_|_~)¨",
 					"end": "¨",
 					"captures": {"0":{"name":"ocultar.n.notasid"}},
 					"patterns": [{ "include": "#dentro de formato" }]
 				},
-				{"name":"strong.markup.underline",
+				{"name":"strong.markup.underline.n",
 					"begin": "(•_|_•)¨",
 					"end": "¨",
 					"captures": {"0":{"name":"ocultar.n.notasid"}},
 					"patterns": [{ "include": "#dentro de formato" }]
 				},
-				{"name":"emphasis.strong.markup.underline",
+				{"name":"emphasis.strong.markup.underline.n",
 					"begin": "(~•_|~_•|•~_|•_~|_~•|_•~)¨",
 					"end": "¨",
 					"captures": {"0":{"name":"ocultar.n.notasid"}},
@@ -435,7 +455,12 @@
 				},
 				{"include": "source.txt"}]
 		},
-		"Prueba":{}
+		"Marcadores de Regiones":{
+			"name": "ocultar.n.marcador-de-region.notasid",
+			"match": "^\\s*(})?R(?(1)|{)"
+		},
+		"Prueba":{
+		}
 	},
 	"scopeName": "source.txt"
 }

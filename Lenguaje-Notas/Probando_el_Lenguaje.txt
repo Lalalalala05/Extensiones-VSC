@@ -3,36 +3,51 @@ Palabras Calve{
 	Pendiente, Pendientes, Pendiente:, Pendientes:,
 	Solución, Soluciones, Solución:, Soluciones:,
 	Command Palette, "Command Palette", #Command Palette#
+	VSC, VS Code, VSCode, VS2019, VS 2019, VS 2018, VS2014, VS 2020, VS2020
+	C#, C++, CSharp, Csharp, XAML, 
+	C#{}C#, C++{}C++, CSharp{}CSharp, XAML{}XAML
 	
 	command, Command, command=, Command=, "command", "Command",
 	when, when=, "when",
 }
 
 Símbolos clave {
-	←-, ←---, ←-----
-	---→
-	←---→
-	---
-	→---
-	---←
-	→---←
-	(×)
-	(○), (☺), (☻)
+	//Pongo "|" porque alinié algunas líneas pero no quiero que eso proboque folding.
+	| ←, ←-, ←---, ←-----, ←←, ←←←←, ←←←---
+	| →, -→, ---→, -----→, →→, →→→→, ---→→→
+	| ←→, ←←→, ←→→, ←--→→, →←, →-←
+	|   ---
+	|  ←---
+	|  →---
+	|   ---→
+	|   ---←
+	|  ←---→
+	|  →---←
+	| →←---→←
+	| ←←---→→
+	| ←→---←→
+	| -→---←-
+	| (×)
+	| (○), (☺), (☻)
 }
 
-Prueba regiones{
-	R{
+Prueba regiones (folding) {
+R{
 		a
-	}R Esta línea debiese ocultarse (○)
+}R Esta línea debiese ocultarse (○)
 	---
+	R{
+			a
+	}R Esta línea debiese ocultarse (○)
+	--- 0
 	R{
 		a
 	}RNo sé si esta línea debiese ocultarse
-	---
+	--- 1
 	R{
 		a
 	"No sé si esta línea }R debiese ocultarse" ¡Cierre forzado! }
-	---
+	--- 2
 	R{
 		a // }R Esto ¡no! debería cerrar la región. (×)
 		¡Clausura forzada! }
@@ -45,6 +60,78 @@ Prueba regiones{
 		}R Esta línea debiese ocultarse en la región interior (○)
 	}R   Esta línea debiese ocultarse en la región exterior (○)
 	---
+	L{
+		1)  sfd
+		2)  sfd
+		3)  sfd
+	}L Esta línea debiese ocultarse (○)
+	---
+	L{
+		1)  sfd
+		L{  ¡Apertura Forzada! {
+			1.1)	sdf
+		}L Esta línea debiese ocultarse en la región interior (○)
+	}L   Esta línea debiese ocultarse en la región exterior (○)
+	---
+	R{
+		sfd
+		L{
+			1)	sdf
+		}L Esta línea debiese ocultarse en la región interior (○)
+	}R   Esta línea debiese ocultarse en la región exterior (○)
+	---
+	R{
+		a
+	}L Esta línea ¡no! debiese ocultarse (×)
+	--- 0
+	R{
+		a
+	}A Esta línea ¡no! debiese ocultarse (○)
+	--- 1
+	R{
+		a ¡Esta "Región" está incluyendo los "---n" hasta 7 (no inclusive)!
+	} Esta línea debiese ocultarse (○)
+	--- 2
+	{
+		Pruebo que sin la "R" la línea siguiente en efecto no se oculta. ¡Todo esta "Región" quedo dentro de la anterior!
+	} Esta línea ¡no! debiese ocultarse (○)
+	--- 3
+	R{
+		a
+ } Esta línea ¡no! debiese ocultarse (○)
+	--- 4
+	A{
+		a
+	}A Esta línea ¡no! debiese ocultarse (○)
+	--- 5
+	A{
+		a
+	}R Esta línea ¡no! debiese ocultarse (○)
+	--- 6
+	A{
+		a
+	}L Esta línea ¡no! debiese ocultarse (○)
+	--- 7
+	R{
+		a
+			}A Esta línea ¡no! debiese ocultarse (×) (puede que se esté ocultando por la identación)
+	--- 8
+	R{
+		a
+ }A Esta línea ¡no! debiese ocultarse (○)
+	--- 9
+	R{
+		a
+}A Esta línea ¡no! debiese ocultarse (○)
+	--- 10
+	R{
+		a
+	} Esta línea ¡no! debiese ocultarse (○)
+	---
+	R{
+		a {}
+		b
+	}R Esta línea debiese ocultarse (○)
 }
 
 Strings{
@@ -92,7 +179,7 @@ Números{
 	}
 }
 
-Ambos: 46 '46' 4'56'
+Ambos: 46 46' 4'56' '46' ¡Cierre forzado! (×)'
 
 Exclamaciones{
   ¡sf}fa!
@@ -132,9 +219,43 @@ Exclamaciones{
 ¿¿¿Nota:???                                                     ¿¿¡sd  ¿asfl?  sf!??
 }
 
-Código{
+Código {
+
+	Código{
+		¡Aún no implementado!
+	}Código
+
+	XAML{
+		<elemento atributo="valor"> //Comentario ¡no propio! de XAML. </elemento>
+			Texto
+		</elemento>
+	}XAML
 	
-}Código
+	C#{
+		namespace Name{
+			class clase1{
+				public string e;
+				public int i;
+				public Int32 i2;
+				public void fn(int i, char c){
+					i = i2;
+					e = i;
+					var a = 0; //sdffjsl
+					var s = "sdfsaf";
+					var s2 = 'sfsadf';
+					bool b = false;
+				};
+			}
+		}
+		public void Función_Fuera_de_Namespace(){
+				string e = "sfg";
+		}
+		internal class Clase_Fuera_de_Namespace{
+			private bool b = true;
+		}
+	}C#
+
+}
 
 Itemizadores{
 !) , ¡)
@@ -155,7 +276,7 @@ a) a) (a)
 c.d) c.d) (c.d)
  c.d)    ( c.d)
 }
-Listado L{
+L{ Listado
 	 item1  Descripcion c'sdñjlñ' sdfs.sdfsaf.
 	2item		Descripcion Notas:
 	Notas:		{[()]}
@@ -176,7 +297,7 @@ Listado L{
 	"sdfjg sdfsg"		Descripcion
 	'sdfjg sdfsg'		Descripcion  
  }L
-}
+}L
 
 Compactos{
   https://gcthesoftwareengineer.com/2017/01/how-to-create-custom-syntax-highlighting-in-a-visual-studio-code-extension/
@@ -223,26 +344,9 @@ Operadores{
 	'a' == 'b'    'a'=='b'
 }
 
-C#{
-	namespace Name{
-		class clase1{
-			public string e;
-			public int i;
-			public Int32 i2;
-			public void fn(){
-				i = i2;
-				e = i;
-				var a = 0; //sdffjsl
-				var s = "sdfsaf";
-				var s2 = 'sfsadf';
-			};
-		}
-	}
-}C#
-
 miembros y tipos{
 	abc.abc.abc, abc.abc.abc. abc.abc; abc.abc<abc>, abc<abc>
-	.abc.abc.abc
+	.abc.abc.abc, .abc.abc, .abc, .abc., .abc.., ..abc., a.abc
 }
 
 Señaladores de tokens R{

@@ -25,6 +25,7 @@
         ["¡", "!"],
         ["rgx{", " }rgx"],
         ["C#{", "}C#"],
+        ["XAML{", "}XAML"],
         ["L{", "}L"],
         ["R{", "}R"],
         ["c¨", "¨"],
@@ -59,8 +60,8 @@
     ],
     "folding": {
         "markers": {
-            "start": "R{",
-            "end": "}R"
+            "start": "\\b[RL]{",  //Al no estar seguido de un número "{" es interpretado literalmente.
+            "end": "}[RL]\\b"     //Análogo al caso anterior. No puedo usar algo capturado en "start".
         }
     }
 }
