@@ -273,8 +273,10 @@ _?) , _ ?) , _?) , ?)_ , ¿) , #) , $)
  45.89) 45.89) ( 45.89)
 a) a) (a)
  b)   ( b)
-c.d) c.d) (c.d)
+ _) (_)
+c.d) c.d) (c.d) (c.de)
  c.d)    ( c.d)
+ c.de) (c._) (_.d) (c._.2)
 }
 L{ Listado
 	 item1  Descripcion c'sdñjlñ' sdfs.sdfsaf.
@@ -297,7 +299,7 @@ L{ Listado
 	"sdfjg sdfsg"		Descripcion
 	'sdfjg sdfsg'		Descripcion  
  }L
-}L
+
 
 Compactos{
   https://gcthesoftwareengineer.com/2017/01/how-to-create-custom-syntax-highlighting-in-a-visual-studio-code-extension/

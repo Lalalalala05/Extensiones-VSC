@@ -164,8 +164,8 @@
 					"match": "(?<=\\s|^)[¡!]\\)(?=\\s)"
 				},
 				{"name":"itemizador.n.string.alfanumerico.notasid",
-					"match": "((?<=^\\s*)|\\()\\w(\\.\\w)*\\)(?=\\s)"
-			}]
+					"match": "((?<=^\\s*)|\\()(?<an>\\d+|\\w)(\\.\\g<an>)*\\)(?=\\s)"
+				}]
 		},
 		"lista":{
 			"name":"listado.notasid",
@@ -381,7 +381,7 @@
 					"begin": "Código{",
 					"end": "}Código"
 				},
-					{"name":"codigo.csharp.notasid",
+				{"name":"codigo.csharp.notasid",
 					"begin": "C#{",
 					"end": "}C#",
 					"captures": { "0":{ "name": "ocultar.n" } },
@@ -457,7 +457,7 @@
 		},
 		"Marcadores de Regiones":{
 			"name": "ocultar.n.marcador-de-region.notasid",
-			"match": "^\\s*(})?R(?(1)|{)"
+			"match": "(?:(})?|\\b)R(?(1)\\b|{)"
 		},
 		"Prueba":{
 		}
