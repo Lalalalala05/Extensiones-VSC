@@ -22,8 +22,10 @@
             "path": "./syntaxes/notasid.tmLanguage.json",
             "embeddedLanguages": {
                 "source.cs": "csharp",
-                "source.vb": "vb",
-                "text.dart.xaml": "xdml"
+                "source.asp.vb.net": "vb",
+                "text.dart.xaml": "xdml",
+                "source.sql": "sql",
+                "source.json": "json"
             }
         }]
     }

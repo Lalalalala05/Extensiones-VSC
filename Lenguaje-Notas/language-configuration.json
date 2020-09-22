@@ -26,6 +26,9 @@
         ["rgx{", " }rgx"],
         ["C#{", "}C#"],
         ["XAML{", "}XAML"],
+        ["VB{", "}VB"],
+        ["SQL{", "}SQL"],
+        ["JSON{", "}JSON"],
         ["L{", "}L"],
         ["R{", "}R"],
         ["c¨", "¨"],
@@ -60,6 +63,7 @@
     ],
     "folding": {
         "markers": {
+            //¡Los delimitadores deben estar en líneas distintas para que funcione bien!
             "start": "\\b[RL]{",  //Al no estar seguido de un número "{" es interpretado literalmente.
             "end": "}[RL]\\b"     //Análogo al caso anterior. No puedo usar algo capturado en "start".
         }

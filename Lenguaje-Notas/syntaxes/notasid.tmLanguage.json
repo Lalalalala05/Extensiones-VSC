@@ -44,7 +44,7 @@
 					"end": "\"(?!\")",
 					"patterns": [
 						{"name": "constant.character.escape.dou.notasid",
-							"match": "\\\\\"|\"\""
+							"match": "\"\""
 						},
 						{"include": "#siempre destacan"
 						},
@@ -56,7 +56,7 @@
 					"end": "'",
 					"patterns": [
 						{"name": "constant.character.escape.sin.notasid",
-							"match": "\\\\'|''"
+							"match": "''"
 						},
 						{"include": "#siempre destacan"
 						},
@@ -128,6 +128,9 @@
 				{"name": "palabra.clave.n.string.notasid",
 					"match": "(?<!\\w)(Notas?:|Pendientes?:|Soluci(ón|ones):|(?<com>\"|)Command Palette\\k<com>|VS( ?Code|C| ?201\\d)|Command ?=|\"command\"|\"when\")(?!\\w)"
 				},
+				{"name": "palabra.clave.suave.n.string.notasid",
+					"match": "(?<!\\w)Ejs?:(?!\\w)"
+				},
 				{"name": "palabra.clave.n.string.nombre-lenguaje.notasid",
 					"match": "(?<![\\w}])(C(\\+\\+|#|Sharp)|XAML)(?![\\w{])"
 				}]
@@ -155,16 +158,16 @@
 		"itemizadores":{
 			"patterns": [
 				{"name":"itemizador.n.string.simbolo.notasid",
-					"match": "(?<=\\s|^)[·•#$]\\)(?=\\s)"
+					"match": "((?<=^\\s*)|(?<!\\w)\\()[·•#$]\\)(?!\\w)"
 				},
 				{"name":"pregunta.n.string.itemizador-simbolo.notasid",
-					"match": "(?<=\\s|^)[¿?]\\)(?=\\s)"
+					"match": "((?<=^\\s*)|(?<!\\w)\\()[¿?]\\)(?!\\w)"
 				},
 				{"name":"exclamacion.n.string.itemizador-simbolo.notasid",
-					"match": "(?<=\\s|^)[¡!]\\)(?=\\s)"
+					"match": "((?<=^\\s*)|(?<!\\w)\\()[¡!]\\)(?!\\w)"
 				},
 				{"name":"itemizador.n.string.alfanumerico.notasid",
-					"match": "((?<=^\\s*)|\\()(?<an>\\d+|\\w)(\\.\\g<an>)*\\)(?=\\s)"
+					"match": "((?<=^\\s*)|(?<!\\w)\\()(?<an>\\d+|\\w)(\\.\\g<an>)*\\)(?!\\w)"
 				}]
 		},
 		"lista":{
@@ -182,7 +185,7 @@
 		"atajo":{
 			"patterns": [
 				{"name":"atajo.n.string.comun.notasid",
-					"match": "(?<=\\s|^)((Ctrl|Shift|Mayús|Alt|Win)\\+)+.+?(?=\\t|\\s{2,})"
+					"match": "(?<=\\s|^)((Ctrl|Shift|Mayús|Alt|Win)\\+)+.+?(?=\\t|\\s{2,}|$)"
 				},
 				{"name":"atajo.n.string.adicional.notasid",
 					"match": "(?<=\\s|^)\\(,?\\+?(Ctrl|Shift|Mayús|Alt|Win)(\\+?|\\+(Ctrl|Shift|Mayús|Alt|Win)\\+?)*\\)(?=\\s)"
@@ -335,7 +338,7 @@
 					}
 				},
 				{"name":"palabra.clave.n.senialado.notasid",
-					"match": "\\b(k')\\w+(?:\\.\\w+)*(')",
+					"match": "\\b(k¨)\\w+(?:\\.\\w+)*(¨)",
 					"captures": {
 						"1": {"name":"ocultar.n.notasid"},
 						"2": {"name":"ocultar.n.notasid"}
@@ -395,7 +398,34 @@
 					{"include": "text.dart.xaml"},
 					{"include": "#tipo comentario en línea"}
 				]
-			}]
+				},
+				{"name":"codigo.vb.notasid",
+				"begin": "VB{",
+				"end": "}VB",
+				"captures": { "0":{ "name": "ocultar.n" } },
+				"patterns": [
+					{"include": "source.asp.vb.net"},
+					{"include": "#tipo comentario en línea"}
+				]
+				},
+				{"name":"codigo.sql.notasid",
+				"begin": "SQL{",
+				"end": "}SQL",
+				"captures": { "0":{ "name": "ocultar.n" } },
+				"patterns": [
+					{"include": "source.sql"},
+					{"include": "#tipo comentario en línea"}
+				]
+				},
+				{"name":"codigo.sql.notasid",
+				"begin": "JSON{",
+				"end": "}JSON",
+				"captures": { "0":{ "name": "ocultar.n" } },
+				"patterns": [
+					{"include": "source.json"},
+					{"include": "#tipo comentario en línea"}
+				]
+				}]
 		},
 		"formato fuente":{
 			"patterns": [

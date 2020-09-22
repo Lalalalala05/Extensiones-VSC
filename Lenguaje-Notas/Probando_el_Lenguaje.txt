@@ -6,6 +6,7 @@ Palabras Calve{
 	VSC, VS Code, VSCode, VS2019, VS 2019, VS 2018, VS2014, VS 2020, VS2020
 	C#, C++, CSharp, Csharp, XAML, 
 	C#{}C#, C++{}C++, CSharp{}CSharp, XAML{}XAML
+	Ej:, Ejs:
 	
 	command, Command, command=, Command=, "command", "Command",
 	when, when=, "when",
@@ -225,12 +226,6 @@ Código {
 		¡Aún no implementado!
 	}Código
 
-	XAML{
-		<elemento atributo="valor"> //Comentario ¡no propio! de XAML. </elemento>
-			Texto
-		</elemento>
-	}XAML
-	
 	C#{
 		namespace Name{
 			class clase1{
@@ -255,12 +250,45 @@ Código {
 		}
 	}C#
 
+	XAML{
+		<elemento atributo="valor"> //Comentario ¡no propio! de XAML. </elemento>
+			Texto
+		</elemento>
+	}XAML
+	
+	VB{
+		Public Class clase1 : Inherits clsBase
+			Public Readonly Property a As Integer
+			Public Readonly Property b As String
+		End Class
+		Public Readonly Property c As Char
+	}VB
+
+	SQL{
+		SELECT *
+		FROM Tabla1 AS T1
+		JOIN Tabla2 AS T2 ON T2.Id = T1.Id
+		WHERE Id = 0 AND Descr LIKE @descr + '%'
+	}SQL
+
+	JSON{
+		{
+			"name":"codigo.sql.notasid",
+			"begin": "JSON{",
+			"end": "}JSON",
+			"captures": { "0":{ "name": "ocultar.n" } },
+			"patterns": [
+				{"include": "source.json"},
+				{"include": "#tipo comentario en línea"}
+			]
+		}
+	}JSON
 }
 
 Itemizadores{
-!) , ¡)
- ·)
-_?) , _ ?) , _?) , ?)_ , ¿) , #) , $)
+!), !) , (!), (¡)
+ ·) , ·) , (·)
+_(?) , _ (?) , _(?) , (?)_ , (¿) , (#) , ($)
  (!) , (·) , (¿)
  ¡!) , ¿?)
  ¡ !) , ¿ ?)
@@ -271,8 +299,8 @@ _?) , _ ?) , _?) , ?)_ , ¿) , #) , $)
  9)  9) ( 9)
 2.5) 2.5) ( 2.5)
  45.89) 45.89) ( 45.89)
-a) a) (a)
- b)   ( b)
+a), a) , (a),
+ b),   ( b)
  _) (_)
 c.d) c.d) (c.d) (c.de)
  c.d)    ( c.d)
@@ -367,14 +395,14 @@ Regex{
 }
 -----------------------------------------
 Atajos{
-Win+U	 blabla
-	Win+U 	_
-	Win+ 	_
-	Win+Num Lock. 	_
-	Win+cualquier cosa que no use \t o \ {2,} 	_
+Win+U	blabla
+	Win+U	blabla
 	Ctrl+sigo con un espacio _
 	Ctrl+sigo con un tab	_
 	Ctrl+sigo con 2 espacios  _
+	Win+cualquier cosa que no use \t o \ {2,} 	_
+	Win+U
+	Win+Num Lock. 	_
 	_ Win+U	_ Win+U	_
 	_ Win+U _ Win+U _
 	_ Win+U _ Win+U  _
