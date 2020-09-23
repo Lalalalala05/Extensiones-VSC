@@ -6,7 +6,9 @@ Palabras Calve{
 	VSC, VS Code, VSCode, VS2019, VS 2019, VS 2018, VS2014, VS 2020, VS2020
 	C#, C++, CSharp, Csharp, XAML, 
 	C#{}C#, C++{}C++, CSharp{}CSharp, XAML{}XAML
-	Ej:, Ejs:
+	Ej:, Ejs:, EJ:, eJs:, EJS:
+	Ej., Ejs., EJ., eJs., EJS., Ej.:, Ej:.
+	_Ej., _Ejs., _EJ:
 	
 	command, Command, command=, Command=, "command", "Command",
 	when, when=, "when",
@@ -227,11 +229,14 @@ Código {
 	}Código
 
 	C#{
+		//Comentario ¡propio! de C#.
+		¨¨Comentario ¡no propio! de C#.
 		namespace Name{
+		//"¨¨" no sirve para comentario en este contexto.
 			class clase1{
 				public string e;
-				public int i;
-				public Int32 i2;
+				public int i;  //Comentario ¡propio! de C#.
+				public Int32 i2; //"¨¨" no sirve para comentario en este contexto.
 				public void fn(int i, char c){
 					i = i2;
 					e = i;
@@ -242,12 +247,14 @@ Código {
 				};
 			}
 		}
+		¨¨Comentario ¡no propio! de C#.
 		public void Función_Fuera_de_Namespace(){
-				string e = "sfg";
+				string e = "sfg"; //"¨¨" no sirve para comentario en este contexto.
 		}
 		internal class Clase_Fuera_de_Namespace{
-			private bool b = true;
+			private bool b = true; //"¨¨" no sirve para comentario en este contexto.
 		}
+		//Comentario ¡propio! de C#.
 	}C#
 
 	XAML{
@@ -259,29 +266,30 @@ Código {
 	VB{
 		Public Class clase1 : Inherits clsBase
 			Public Readonly Property a As Integer
-			Public Readonly Property b As String
+			Public Readonly Property b As String //Comentario ¡no propio! de VB.
 		End Class
-		Public Readonly Property c As Char
+		Public Readonly Property c As Char  //Comentario ¡no propio! de VB.
 	}VB
 
 	SQL{
+		SELECT * FROM Tabla
 		SELECT *
 		FROM Tabla1 AS T1
-		JOIN Tabla2 AS T2 ON T2.Id = T1.Id
+		JOIN Tabla2 AS T2 ON T2.Id = T1.Id   //Comentario ¡no propio! de SQL.
 		WHERE Id = 0 AND Descr LIKE @descr + '%'
 	}SQL
 
 	JSON{
 		{
 			"name":"codigo.sql.notasid",
-			"begin": "JSON{",
+			"begin": "JSON{",  //Comentario ¡propio! de JSON.
 			"end": "}JSON",
 			"captures": { "0":{ "name": "ocultar.n" } },
 			"patterns": [
 				{"include": "source.json"},
 				{"include": "#tipo comentario en línea"}
-			]
-		}
+			]  //Comentario ¡propio! de JSON.
+		}  //Comentario ¡no propio! de JSON.
 	}JSON
 }
 
@@ -298,11 +306,17 @@ _(?) , _ (?) , _(?) , (?)_ , (¿) , (#) , ($)
 58) 58) (58)
  9)  9) ( 9)
 2.5) 2.5) ( 2.5)
+2,5) 2,5) ( 2,5)
+2_5) 2_5) ( 2_5)
  45.89) 45.89) ( 45.89)
+ 45,89) 45,89) ( 45,89)
+ 45_89) 45_89) ( 45_89)
 a), a) , (a),
  b),   ( b)
  _) (_)
 c.d) c.d) (c.d) (c.de)
+c,d) c,d) (c,d) (c,de)
+c_d) c_d) (c_d) (c_de)
  c.d)    ( c.d)
  c.de) (c._) (_.d) (c._.2)
 }
@@ -380,13 +394,13 @@ miembros y tipos{
 }
 
 Señaladores de tokens R{
-	C¨abc.abc.abc¨, C¨abc¨, C¨abc<abc>¨, C¨abc<abc<abc>>¨
-	C"abc.abc.abc", C"abc"
+	C¨abc.abc.abc¨, C¨abc¨, C¨abc<abc>¨, C¨abc<abc<abc>>¨, C¨abc(3)¨, C¨abc1<def2>3(4)¨, C¨(0)abc<def[gh]>¨, C¨abc<def[12(d45{¨ ¡Cierre forzado! }
+	C"abc.abc.abc", C"abc", C"abc<abc>", C"abc<abc<abc>>", C"abc(3)", C"abc1<def2>3(4)", C"(0)abc<def[gh]>", C"abc<def[12(d45{" ¡Cierre forzado! }
 	P¨abc¨, P"abc"
 	c¨abc¨, c"abc"
 	F¨abc¨, F¨abc()¨, F¨asd(dff, sflññ)<sflñdf?s ffsñl¡ dfdsa! #& ¨
 	E¨abc¨
-	k'abc'
+	k¨abc¨
 	I¨abc¨
 }R
 

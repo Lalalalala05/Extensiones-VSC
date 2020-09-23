@@ -78,6 +78,12 @@
 			"captures": {"1":{"patterns": [
 				{"include": "#siempre destacan + string en línea"}
 		]}}},
+		"tipo comentario en línea alternativo":{
+			"name":"comment.linea.alternativo.notasid",
+			"match": "(?<!\\w)¨¨(.*)$",
+			"captures": {"1":{"patterns": [
+				{"include": "#siempre destacan + string en línea"}
+		]}}},
 		"tipo comentario en bloque":{
 			"name":"comment.bloque.notasid",
 			"begin": "/\\*",
@@ -129,10 +135,10 @@
 					"match": "(?<!\\w)(Notas?:|Pendientes?:|Soluci(ón|ones):|(?<com>\"|)Command Palette\\k<com>|VS( ?Code|C| ?201\\d)|Command ?=|\"command\"|\"when\")(?!\\w)"
 				},
 				{"name": "palabra.clave.suave.n.string.notasid",
-					"match": "(?<!\\w)Ejs?:(?!\\w)"
+					"match": "(?i)\\bEjs?[:.](?!\\w)"
 				},
 				{"name": "palabra.clave.n.string.nombre-lenguaje.notasid",
-					"match": "(?<![\\w}])(C(\\+\\+|#|Sharp)|XAML)(?![\\w{])"
+					"match": "(?<![\\w}])(C(\\+\\+|#|Sharp)|JSON|SQL|VB|XAML)(?![\\w{])"
 				}]
 		},
 		"símbolos clave": {
@@ -167,7 +173,7 @@
 					"match": "((?<=^\\s*)|(?<!\\w)\\()[¡!]\\)(?!\\w)"
 				},
 				{"name":"itemizador.n.string.alfanumerico.notasid",
-					"match": "((?<=^\\s*)|(?<!\\w)\\()(?<an>\\d+|\\w)(\\.\\g<an>)*\\)(?!\\w)"
+					"match": "((?<=^\\s*)|(?<!\\w)\\()(?<an>\\d+|\\w)([.,_]\\g<an>)*\\)(?!\\w)"
 				}]
 		},
 		"lista":{
@@ -274,25 +280,31 @@
 		"señaladores de tokens":{
 			"patterns": [
 				{"name":"clase.n.senialado.notasid",
-					"match": "(?x)\\b(C¨)(?<rec> \\w+(?:\\.\\w+)* (?:< \\g<rec> >)? )(¨)",
+					"match": "\\b(C¨)[^¨]+(¨)",
 					"captures": {
-						"2": { "patterns": [
-							{"name":"operador.n.separaTipoGenerico.notasid",
-								"match": "[<>]"}
-						]},
+						"0": { "patterns": [
+							{"name":"operador.n.caracterespecial.notasid",
+								"match": "\\W"
+							},
+							{"name":"constant.numeric.notasid",
+								"match": "\\b\\d+\\b"
+							}]},
 						"1": {"name":"ocultar.n.notasid"},
-						"3": {"name":"ocultar.n.notasid"}
+						"2": {"name":"ocultar.n.notasid"}
 					}
 				},
 				{"name":"clase.ita.n.senialado.notasid",
-					"match": "(?x)\\b(C\")(?<rec> \\w+(?:\\.\\w+)* (?:< \\g<rec> >)? )(\")",
+					"match": "\\b(C\")[^\"]+(\")",
 					"captures": {
-						"2": { "patterns": [
-							{"name":"operador.n.separaTipoGenerico.notasid",
-								"match": "[<>]"}
-						]},
+						"0": { "patterns": [
+							{"name":"operador.n.caracterespecial.notasid",
+								"match": "\\W"
+							},
+							{"name":"constant.numeric.notasid",
+								"match": "\\b\\d+\\b"
+							}]},
 						"1": {"name":"ocultar.n.notasid"},
-						"3": {"name":"ocultar.n.notasid"}
+						"2": {"name":"ocultar.n.notasid"}
 					}
 				},
 				{"name":"support.type.property-name.senialado.notasid",
@@ -388,43 +400,46 @@
 					"begin": "C#{",
 					"end": "}C#",
 					"captures": { "0":{ "name": "ocultar.n" } },
-					"patterns": [{"include": "source.cs"}]
+					"patterns": [
+						{"include": "#tipo comentario en línea alternativo"},
+						{"include": "source.cs"}
+					]
 				},
 				{"name":"codigo.xaml.notasid",
-				"begin": "XAML{",
-				"end": "}XAML",
-				"captures": { "0":{ "name": "ocultar.n" } },
-				"patterns": [
-					{"include": "text.dart.xaml"},
-					{"include": "#tipo comentario en línea"}
+					"begin": "XAML{",
+					"end": "}XAML",
+					"captures": { "0":{ "name": "ocultar.n" } },
+					"patterns": [
+						{"include": "text.dart.xaml"},
+						{"include": "#tipo comentario en línea"}
 				]
 				},
 				{"name":"codigo.vb.notasid",
-				"begin": "VB{",
-				"end": "}VB",
-				"captures": { "0":{ "name": "ocultar.n" } },
-				"patterns": [
-					{"include": "source.asp.vb.net"},
-					{"include": "#tipo comentario en línea"}
-				]
+					"begin": "VB{",
+					"end": "}VB",
+					"captures": { "0":{ "name": "ocultar.n" } },
+					"patterns": [
+						{"include": "source.asp.vb.net"},
+						{"include": "#tipo comentario en línea"}
+					]
 				},
 				{"name":"codigo.sql.notasid",
-				"begin": "SQL{",
-				"end": "}SQL",
-				"captures": { "0":{ "name": "ocultar.n" } },
-				"patterns": [
-					{"include": "source.sql"},
-					{"include": "#tipo comentario en línea"}
-				]
+					"begin": "SQL{",
+					"end": "}SQL",
+					"captures": { "0":{ "name": "ocultar.n" } },
+					"patterns": [
+						{"include": "#tipo comentario en línea"},
+						{"include": "source.sql"}
+					]
 				},
-				{"name":"codigo.sql.notasid",
-				"begin": "JSON{",
-				"end": "}JSON",
-				"captures": { "0":{ "name": "ocultar.n" } },
-				"patterns": [
-					{"include": "source.json"},
-					{"include": "#tipo comentario en línea"}
-				]
+				{"name":"codigo.json.notasid",
+					"begin": "JSON{",
+					"end": "}JSON",
+					"captures": { "0":{ "name": "ocultar.n" } },
+					"patterns": [
+						{"include": "#tipo comentario en línea"},
+						{"include": "source.json"}
+					]
 				}]
 		},
 		"formato fuente":{
