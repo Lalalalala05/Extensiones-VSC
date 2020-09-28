@@ -1,0 +1,24 @@
+{
+	"name":"sql_n",
+	"displayName":"%displayName%",
+	"description":"%description%",
+	"version":"1.0.0",
+	"engines":{"vscode":"*"},
+	"contributes":{
+		"languages":[
+			{
+				"id":"sql_n",
+				"extensions":[".sql",".dsql"],
+				"aliases":["SQL N"],
+				"configuration":"./language-configuration.json"
+			}
+		],
+		"grammars":[
+			{
+				"language":"sql_n",
+				"scopeName":"source.sql_n",
+				"path":"./syntaxes/sql.tmLanguage.json"
+			}
+		]
+	}
+}
