@@ -132,10 +132,13 @@
 		"palabras clave": {
 			"patterns": [
 				{"name": "palabra.clave.n.string.notasid",
-					"match": "(?<!\\w)(Notas?:|Pendientes?:|Soluci(ón|ones):|(?<com>\"|)Command Palette\\k<com>|VS( ?Code|C| ?201\\d)|Command ?=|\"command\"|\"when\")(?!\\w)"
+					"match": "(?<!\\w)(Notas?:|Pendientes?:|Soluci(ón|ones):|VS( ?Code|C|(?<anio> ?20\\d{2}))|SQL( ?MS| Server)\\g<anio>?|Cr(Lf)?|Lf|(?<com>\"|)Command Palette\\k<com>|Command ?=|\"command\"|\"when\")(?!\\w)"
 				},
 				{"name": "palabra.clave.suave.n.string.notasid",
 					"match": "(?i)\\bEjs?[:.](?!\\w)"
+				},
+				{"name": "palabra.clave.suave.n.string.notasid",
+					"match": "\\bi\\.e\\.(?!\\w)"
 				},
 				{"name": "palabra.clave.n.string.nombre-lenguaje.notasid",
 					"match": "(?<![\\w}])(C(\\+\\+|#|Sharp)|JSON|SQL|VB|XAML)(?![\\w{])"
@@ -274,7 +277,7 @@
 		"miembros y tipos":{
 			"patterns": [
 				{"name":"support.type.property-name.por.comenzar.con.punto.notasid",
-					"match": "(?<=\\W)\\.\\w+(\\.\\w+)*\\b"
+					"match": "(?<![\\w.])\\.\\w+(\\.\\w+)*\\b"
 			}]
 		},
 		"señaladores de tokens":{
@@ -338,6 +341,10 @@
 				{"name":"entity.name.function.senialado.notasid",
 					"match": "\\b(F¨)[^¨]+(¨)",
 					"captures": {
+						"0": { "patterns": [
+							{"name":"operador.n.caracterespecial.notasid",
+								"match": "\\W"
+							}]},
 						"1": {"name":"ocultar.n.notasid"},
 						"2": {"name":"ocultar.n.notasid"}
 					}
@@ -371,7 +378,7 @@
 					}
 				},
 				{"name":"interface.ita.n.senialado.notasid",
-					"match": "\\b(I\")\\w+(?:\\.\\w+)*(\")",
+					"match":"\\b(I\")\\w+(?:\\.\\w+)*(\")",
 					"captures": {
 						"1": {"name":"ocultar.n.notasid"},
 						"2": {"name":"ocultar.n.notasid"}

@@ -3,12 +3,15 @@ Palabras Calve{
 	Pendiente, Pendientes, Pendiente:, Pendientes:,
 	Solución, Soluciones, Solución:, Soluciones:,
 	Command Palette, "Command Palette", #Command Palette#
-	VSC, VS Code, VSCode, VS2019, VS 2019, VS 2018, VS2014, VS 2020, VS2020
-	C#, C++, CSharp, Csharp, XAML, 
+	VSC, VS Code, VSCode, VS2019, VS 2019, VS 2018, VS2014, VS 2020, VS2020,
+	SQLMS, SQL MS, SQLMS 2021, SQLMS 20212, SQL MS 2000, SQL Server, SQL Server 2050,
+	CrLf, Cr, Lf, CR, cr, lF, crlf,
+	C#, C++, CSharp, Csharp, XAML,
 	C#{}C#, C++{}C++, CSharp{}CSharp, XAML{}XAML
 	Ej:, Ejs:, EJ:, eJs:, EJS:
 	Ej., Ejs., EJ., eJs., EJS., Ej.:, Ej:.
 	_Ej., _Ejs., _EJ:
+	i.e., I.E., .i.e.,
 	
 	command, Command, command=, Command=, "command", "Command",
 	when, when=, "when",
@@ -390,7 +393,7 @@ Operadores{
 
 miembros y tipos{
 	abc.abc.abc, abc.abc.abc. abc.abc; abc.abc<abc>, abc<abc>
-	.abc.abc.abc, .abc.abc, .abc, .abc., .abc.., ..abc., a.abc
+	.abc.abc.abc, .abc.abc, .abc, .abc., .abc.., ..abc., a.abc, #.abc, ¬.abc, $.abc,
 }
 
 Señaladores de tokens R{
