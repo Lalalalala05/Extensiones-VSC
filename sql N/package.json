@@ -1,5 +1,5 @@
 {
-	"name":"sql_n",
+	"name":"sql",
 	"displayName":"%displayName%",
 	"description":"%description%",
 	"version":"1.0.0",
@@ -16,7 +16,7 @@
 		"grammars":[
 			{
 				"language":"sql_n",
-				"scopeName":"source.sql_n",
+				"scopeName":"source.sql",
 				"path":"./syntaxes/sql.tmLanguage.json"
 			}
 		]
