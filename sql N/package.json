@@ -16,7 +16,7 @@
 		"grammars":[
 			{
 				"language":"sql_n",
-				"scopeName":"source.sql",
+				"scopeName":"source.sql_n",
 				"path":"./syntaxes/sql.tmLanguage.json"
 			}
 		]
