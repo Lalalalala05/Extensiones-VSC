@@ -3,18 +3,25 @@ Palabras Calve{
 	Pendiente, Pendientes, Pendiente:, Pendientes:,
 	Solución, Soluciones, Solución:, Soluciones:,
 	Command Palette, "Command Palette", #Command Palette#
-	VSC, VS Code, VSCode, VS2019, VS 2019, VS 2018, VS2014, VS 2020, VS2020,
-	SQLMS, SQL MS, SQLMS 2021, SQLMS 20212, SQL MS 2000, SQL Server, SQL Server 2050,
-	CrLf, Cr, Lf, CR, cr, lF, crlf,
-	C#, C++, CSharp, Csharp, XAML,
-	C#{}C#, C++{}C++, CSharp{}CSharp, XAML{}XAML
-	Ej:, Ejs:, EJ:, eJs:, EJS:
-	Ej., Ejs., EJ., eJs., EJS., Ej.:, Ej:.
-	_Ej., _Ejs., _EJ:
-	i.e., I.E., .i.e.,
-	
 	command, Command, command=, Command=, "command", "Command",
 	when, when=, "when",
+	CrLf, Cr, Lf, CR, cr, lF, crlf,
+	Nombre Programa R{
+		VSC, VS Code, VSCode,
+		VS2019, VS 2019, VS 2018, VS2014, VS 2020, VS2020,
+		SQLMS, SQL MS, SQLMS 2021, SQLMS 20212, SQL MS 2000, SQL Server, SQL Server 2050,
+		RegEx, regex, Regex, REGEX,
+	}R
+	Nombre Lenguaje R{
+		C#, C++, CSharp, Csharp, XAML,
+		C#{}C#, C++{}C++, CSharp{}CSharp, XAML{}XAML
+	}R
+	Suaves R{
+		Ej:, Ejs:, EJ:, eJs:, EJS:
+		Ej., Ejs., EJ., eJs., EJS., Ej.:, Ej:.
+		_Ej., _Ejs., _EJ:
+		i.e., I.E., .i.e.,
+	}R
 }
 
 Símbolos clave {
@@ -182,6 +189,10 @@ Números{
 
 		$34, £34
 		34$, 34£
+	}
+	No número {
+		n°, nº, N°, Nº, n°_, nº_,
+		i-ésima, k-ésima, n-ésima, I-ésima, K-ésima, n-Ésima,
 	}
 }
 
@@ -399,12 +410,13 @@ miembros y tipos{
 Señaladores de tokens R{
 	C¨abc.abc.abc¨, C¨abc¨, C¨abc<abc>¨, C¨abc<abc<abc>>¨, C¨abc(3)¨, C¨abc1<def2>3(4)¨, C¨(0)abc<def[gh]>¨, C¨abc<def[12(d45{¨ ¡Cierre forzado! }
 	C"abc.abc.abc", C"abc", C"abc<abc>", C"abc<abc<abc>>", C"abc(3)", C"abc1<def2>3(4)", C"(0)abc<def[gh]>", C"abc<def[12(d45{" ¡Cierre forzado! }
-	P¨abc¨, P"abc"
+	P¨abc¨, P"abc", ¨.abc abc, ¨.abc$%&#?""<>def ghi,
 	c¨abc¨, c"abc"
 	F¨abc¨, F¨abc()¨, F¨asd(dff, sflññ)<sflñdf?s ffsñl¡ dfdsa! #& ¨
 	E¨abc¨
 	k¨abc¨
 	I¨abc¨
+	W¨DefaultKeyWord¨
 }R
 
 Regex{
