@@ -21,11 +21,11 @@
             "scopeName": "source.txt",
             "path": "./syntaxes/notasid.tmLanguage.json",
             "embeddedLanguages": {
-                "source.cs": "csharp",
-                "source.asp.vb.net": "vb",
-                "text.dart.xaml": "xdml",
-                "source.sql": "sql",
-                "source.json": "json"
+                "codigo.csharp": "csharp",
+                "codigo.vb": "vb",
+                "codigo.dart.xaml": "xdml",
+                "codigo.sql_n": "sql_n",
+                "codigo.json": "json"
             }
         }]
     }

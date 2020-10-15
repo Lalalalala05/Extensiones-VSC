@@ -238,10 +238,6 @@ Exclamaciones{
 
 Código {
 
-	Código{
-		¡Aún no implementado!
-	}Código
-
 	C#{
 		//Comentario ¡propio! de C#.
 		¨¨Comentario ¡no propio! de C#.
@@ -286,6 +282,7 @@ Código {
 	}VB
 
 	SQL{
+		RIGHT()
 		SELECT * FROM Tabla
 		SELECT *
 		FROM Tabla1 AS T1

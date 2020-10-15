@@ -416,10 +416,6 @@
 		},
 		"códigos":{
 			"patterns": [
-				{"name":"generico.n.notasid",
-					"begin": "Código{",
-					"end": "}Código"
-				},
 				{"name":"codigo.csharp.notasid",
 					"begin": "C#{",
 					"end": "}C#",
@@ -447,7 +443,7 @@
 						{"include": "#tipo comentario en línea"}
 					]
 				},
-				{"name":"codigo.sql.notasid",
+				{"name":"codigo.sql_n.notasid",
 					"begin": "SQL{",
 					"end": "}SQL",
 					"captures": { "0":{ "name": "ocultar.n" } },
