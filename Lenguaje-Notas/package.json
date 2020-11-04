@@ -24,6 +24,7 @@
                 "codigo.csharp": "csharp",
                 "codigo.vb": "vb",
                 "codigo.dart.xaml": "xdml",
+                "codigo.xml": "xml",
                 "codigo.sql_n": "sql_n",
                 "codigo.json": "json"
             }

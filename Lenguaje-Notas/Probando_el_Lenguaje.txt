@@ -8,12 +8,12 @@ Palabras Calve{
 	CrLf, Cr, Lf, CR, cr, lF, crlf,
 	Nombre Programa R{
 		VSC, VS Code, VSCode,
-		VS2019, VS 2019, VS 2018, VS2014, VS 2020, VS2020,
-		SQLMS, SQL MS, SQLMS 2021, SQLMS 20212, SQL MS 2000, SQL Server, SQL Server 2050,
+		VS2019, VS 2019, VS 2018, VS2014, VS 2020, VS2020, VS 20__, VS20??, VS 20_, VS20?,
+		SQLMS, SQL MS, SQLMS 2021, SQLMS 20212, SQL MS 2000, SQL Server, SQL Server 2050, SQL Server 20_?,
 		RegEx, regex, Regex, REGEX,
 	}R
 	Nombre Lenguaje R{
-		C#, C++, CSharp, Csharp, XAML,
+		C#, C++, CSharp, Csharp, XAML, Xamarin, xamarin
 		C#{}C#, C++{}C++, CSharp{}CSharp, XAML{}XAML
 	}R
 	Suaves R{
@@ -150,6 +150,7 @@ R{
 Strings{
 	asdg sadf "sdgh " dslñf jñl 'slajf' jñl'slajf' slkdjfsl "sdfj lñd' \" jdslfj lsjf" kjsfsajfl ' \' \skld\fjskdljflk' sjdflñsjfdl" sdjfslñdfj" sldfjñlñj' sldfjlsdjf' sldfjsldfj'
 	sdf ' sdfj' sldkjf ' lksjljl " lkdjf' sdfjkl " sadfhlks ' lñsdfj "
+	"C¨cla¨P¨pro.¨F¨mét¨"
 }
 
 Números{
@@ -272,7 +273,11 @@ Código {
 			Texto
 		</elemento>
 	}XAML
-	
+
+	XML{
+		<elem "atributo" = valor> Texto </elem>
+	}XML
+
 	VB{
 		Public Class clase1 : Inherits clsBase
 			Public Readonly Property a As Integer
@@ -353,15 +358,47 @@ L{ Listado
 	'sdfjg sdfsg'		Descripcion  
  }L
 
+Atajos{
+Win+U	blabla
+	Win+U	blabla
+	Ctrl+sigo con un espacio _
+	Ctrl+sigo con un tab	_
+	Ctrl+sigo con 2 espacios  _
+	Win+cualquier cosa que no use \t o \ {2,} 	_
+	Win+U
+	Win+Num Lock. 	_
+	_ Win+U	_ Win+U	_
+	_ Win+U _ Win+U _
+	_ Win+U _ Win+U  _
+	!) Win+U	_
+	   (+Shift)	_
+	   (,+Alt)	_
+	!) (+Ctrl)		  Switch to the last active window of the app.
+	_"Alt+algo"_
+	_"alt+algo 2"_
+	_"alt+algo  3"_
+	_"alt+algo \" 4"_ Fuerzo cierre string"
 
-Compactos{
-  https://gcthesoftwareengineer.com/2017/01/how-to-create-custom-syntax-highlighting-in-a-visual-studio-code-extension/
-"C:\Users\jonah\.vscode\" no quiero que esto forme parte del PATH "Agrego más símbolos \""
-	"C:\Users\jonah\.vscode" no quiero que esto forme parte del PATH "Agrego más símbolos \""
-	"C:\Users\jonah\.vscode\" no quiero que esto forme parte del PATH "Agrego más símbolos \""
+F1	    Display Help
+    F1	    Display Help
+ !) F1	    Display Help
+ !) "F1"	    Display Help
+}
+
+URL R{
+	https://git-scm.com/algo/más
+	https://www.google.com/algo/más
+	https://stackoverflow.com/algo/más
+	https://en.wikipedia.org/algo/más
+	https://www.codeproject.com/algo/más
+	https://www.youtube.com/algo/más
+	https://gcthesoftwareengineer.com/2017/01/how-to-create-custom-syntax-highlighting-in-a-visual-studio-code-extension/
+"C:\Users\jonah\.vscode\" no quiero que esto forme parte del PATH "Agrego más comillas dobles"
+	"C:\Users\jonah\.vscode" no quiero que esto forme parte del PATH "Agrego más comillas dobles"
+	"C:\Users\jonah\.vscode\" no quiero que esto forme parte del PATH "Agrego más comillas dobles"
 	"c:\Users\jonah\.vscode"
 	"D:\Users\jonah\.vscode"
-	"d:\Users\jonah\.vscode\" Tengo que cerrar el String"
+	"d:\Users\jonah\.vscode\"
 	"Z:\Users\jonah\.vscode"
 	"Ñ:\Users\jonah\.vscode"
 	".\jonah\.vscode"
@@ -369,7 +406,7 @@ Compactos{
 	".\jonah\.vscode\"
 	"..\jonah\.vscode\"
 	"...\jonah\.vscode"
-}
+}R
 
 Comentarios{
 	// asd "asd", sf.sff. P'sfsfsf', Ctrl+algo  , "C:\Users\jonah\.vscode\extensions", https://gcthesoftwareengineer.com/2017/01/how-to-create-custom...
@@ -409,44 +446,19 @@ Señaladores de tokens R{
 	C"abc.abc.abc", C"abc", C"abc<abc>", C"abc<abc<abc>>", C"abc(3)", C"abc1<def2>3(4)", C"(0)abc<def[gh]>", C"abc<def[12(d45{" ¡Cierre forzado! }
 	P¨abc¨, P"abc", ¨.abc abc, ¨.abc$%&#?""<>def ghi,
 	c¨abc¨, c"abc"
-	F¨abc¨, F¨abc()¨, F¨asd(dff, sflññ)<sflñdf?s ffsñl¡ dfdsa! #& ¨
+	F¨abc¨, F¨abc()¨, F¨asd(dff, sflññ)<sflñdf?s ffsñl¡ dfdsa! #& ¨,
+	F¨abc.def()¨, F¨abc.def.ghi()¨, F¨abc(2).def(6).ghi(5, sfad)¨
 	E¨abc¨
 	k¨abc¨
 	I¨abc¨
 	W¨DefaultKeyWord¨
+	WC¨if¨, WC¨Catch()¨, WC¨For Each¨,
 }R
 
 Regex{
 	rgx{ asdfg }rgx
 }
 -----------------------------------------
-Atajos{
-Win+U	blabla
-	Win+U	blabla
-	Ctrl+sigo con un espacio _
-	Ctrl+sigo con un tab	_
-	Ctrl+sigo con 2 espacios  _
-	Win+cualquier cosa que no use \t o \ {2,} 	_
-	Win+U
-	Win+Num Lock. 	_
-	_ Win+U	_ Win+U	_
-	_ Win+U _ Win+U _
-	_ Win+U _ Win+U  _
-	!) Win+U	_
-	   (+Shift)	_
-	   (,+Alt)	_
-	!) (+Ctrl)		  Switch to the last active window of the app.
-	_"Alt+algo"_
-	_"alt+algo 2"_
-	_"alt+algo  3"_
-	_"alt+algo \" 4"_ Fuerzo cierre string"
-
-F1	    Display Help
-    F1	    Display Help
- !) F1	    Display Help
- !) "F1"	    Display Help
-}
-
 Formatos fuente {
 	Itálica{
 		  Comparo
