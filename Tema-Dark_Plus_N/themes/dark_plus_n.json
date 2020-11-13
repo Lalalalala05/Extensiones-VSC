@@ -399,6 +399,9 @@
 		{"scope": "link.n",
 			"settings": { "foreground": "#4477cc" }
 		},
+		{"scope": "link.dominio-destacado.n",
+			"settings": { "foreground": "#6c8dc7" }
+		},
 		{"scope": "atajo.n",
 			"settings": { "foreground": "#7a7ae0" }
 		},
@@ -418,7 +421,7 @@
 			"settings": { "foreground": "#9a9aac" }
 		},
 
-		
+
 		{"scope": "operador.n",
 			"settings": { "foreground": "#777" }
 		},
@@ -475,7 +478,7 @@
 			"settings": { "foreground": "#464949" }
 		},
 
-		
+
 		{"scope": "formato.comun.n",
 			"settings": { "fontStyle": "" },
 		},
@@ -490,10 +493,15 @@
 		},
 		{"scope": "emphasis.strong.markup.underline.n",
 			"settings": { "fontStyle": "italic bold underline" },
+		},
+
+
+		{"scope": "entity.name.variable.parameter.cs",
+			"settings": { "foreground": "#c6e4f5" },
 		}
 	]
-	
-	
+
+
 	,
 	"semanticTokenColors": {
 		"newOperator":"#C586C0",

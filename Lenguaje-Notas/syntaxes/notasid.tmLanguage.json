@@ -14,9 +14,7 @@
 		{"include": "#tipo string en bloque"},
 		{"include": "#tipo comentario en bloque"},
 		{"include": "#lista"},
-		{"include": "#formato fuente"},
-
-		{"include": "#Prueba"}
+		{"include": "#formato fuente"}
 	],
 	"repository": {
 		"siempre destacan":{ "patterns": [
@@ -53,14 +51,10 @@
 				},
 				{"name": "string.quoted.single.notasid",
 					"begin": "(?<!\\w)'",
-					"end": "'",
+					"end": "'(?!')",
 					"patterns": [
 						{"name": "constant.character.escape.sin.notasid",
 							"match": "''"
-						},
-						{"include": "#siempre destacan"
-						},
-						{"include": "#formato fuente"
 						}]
 			}]
 		},
@@ -106,23 +100,23 @@
 			"name": "constant.numeric.notasid",
 			"patterns": [
 				{"name": "constant.numeric.conSepDeMiles.monetario.notasid",
-					"match": "(?<!\\w)[$£]\\d{1,3}(,\\d{3})+(\\.[\\d_]+)?\\b|\\b\\d{1,3}(,\\d{3})+(\\.[\\d_]+)?[$£](?!\\w)"
+					"match": "(?x)(?: (?<i>(?<!\\w)(?<s>[$£¥])) | \\b ) \\d{1,3}(?:,\\d{3})+ (?: \\.[\\d_]+ | (?<f>[¼½¾]) )? (?(1)(?(3) (?!\\w) | \\b ) | \\g<s>(?!\\w) )"
 				},
 				{"name": "constant.numeric.conSepDeMiles.conUnidad.notasid",
-					"match": "\\b\\d{1,3}(,\\d{3})+(\\.[\\d_]+)?((hs|min|seg|[Kkm]?[GgLlMm]|[TGMK]?[Bb])\\b|''|[°'ºª%])"
+					"match": "\\b\\d{1,3}(,\\d{3})+(\\.[\\d_]+|[¼½¾])?((hs|min|seg|[Kkm]?[GgLlMm]|[TGMK]?[Bb])\\b|''|[°'ºª%])"
 				},
 				{"name": "constant.numeric.conSepDeMiles.notasid",
-					"match": "\\b\\d{1,3}(,\\d{3})+(\\.[\\d_]+)?\\b"
+					"match": "\\b\\d{1,3}(,\\d{3})+(\\.[\\d_]+|[¼½¾])?\\b"
 				},
 
 				{"name": "constant.numeric.sinSepDeMiles.monetario.notasid",
-					"match": "(?<!\\w)[$£](?!_)[\\d_]+(\\.[\\d_]+)?\\b|\\b(?!_)[\\d_]+(\\.[\\d_]+)?\\b[$£](?!\\w)"
+					"match": "(?x)(?: (?<i>(?<!\\w)(?<s>[$£¥])) | \\b ) (?!_)[\\d_]+ (?: \\.[\\d_]+ | (?<f>[¼½¾]) )? (?(1)(?(3) (?!\\w) | \\b ) | \\g<s>(?!\\w) )"
 				},
 				{"name": "constant.numeric.sinSepDeMiles.conUnidad.notasid",
-					"match": "\\b(?!_)[\\d_]+(\\.[\\d_]+)?((hs|min|seg|[Kkm]?[GgLlMm]|[TGMK]?[Bb])\\b|''|[°'ºª%])"
+					"match": "\\b(?!_)[\\d_]+(\\.[\\d_]+|[¼½¾])?((hs|min|seg|[Kkm]?[GgLlMm]|[TGMK]?[Bb])\\b|''|[°'ºª%])"
 				},
 				{"name": "constant.numeric.sinSepDeMiles.notasid",
-					"match": "\\b(?!_)[\\d_]+(\\.[\\d_]+)?\\b"
+					"match": "\\b(?!_)[\\d_]+(\\.[\\d_]+|[¼½¾])?\\b"
 				},
 
 				{"name": "constant.numeric.hexadecimal.notasid",
@@ -221,7 +215,7 @@
 				{"name":"link.n.string.notasid",
 					"match":"\\b(http|https|ftp|file)://(\\S+)\\b/?",
 					"captures": { "2": { "patterns":[ {"name": "link.dominio-destacado.n.string.notasid",
-						"match": "(?x)( (?: stackoverflow | git-scm | (?<=www\\.)(?: youtube | codeproject | google ))(?=\\.com) | (?<=en\\.)wikipedia(?=\\.org))"
+						"match": "(?x)( (?: stackoverflow | git-scm | (?<=[^\\.]+\\.)(?: visualstudio | microsoft) | (?<=www\\.)(?: youtube | codeproject | google ))(?=\\.com) | (?<=en\\.)wikipedia(?=\\.org))"
 					}]}}
 				},
 				{"name":"path.n.string.notasid",
@@ -301,7 +295,7 @@
 					}
 				},
 				{"name":"clase.ita.n.senialado.notasid",
-					"match": "\\b(C\")([^\"]+)(\")",
+					"match": "\\b(C~)([^~]+)(~)",
 					"captures": {
 						"2": { "patterns": [
 							{"name":"operador.n.caracterespecial.notasid",
@@ -322,7 +316,7 @@
 					}
 				},
 				{"name":"propiedad.ita.n.senialado.notasid",
-					"match": "\\b(P\")\\w+(?:\\.\\w+)*(\")",
+					"match": "\\b(P~)([^~]+)(~)",
 					"captures": {
 						"1": {"name":"ocultar.n.notasid"},
 						"2": {"name":"ocultar.n.notasid"}
@@ -346,7 +340,7 @@
 					}
 				},
 				{"name":"constante.ita.n.senialado.notasid",
-					"match": "\\b(c\")\\w+(?:\\.\\w+)*(\")",
+					"match": "\\b(c~)[^~]+(~)",
 					"captures": {
 						"1": {"name":"ocultar.n.notasid"},
 						"2": {"name":"ocultar.n.notasid"}
@@ -377,14 +371,14 @@
 					}
 				},
 				{"name":"palabra.clave.n.senialado.notasid",
-					"match": "\\b(k¨)\\w+(?:\\.\\w+)*(¨)",
+					"match": "\\b(k¨)[^¨]+(¨)",
 					"captures": {
 						"1": {"name":"ocultar.n.notasid"},
 						"2": {"name":"ocultar.n.notasid"}
 					}
 				},
 				{"name":"palabra.clave.ita.n.senialado.notasid",
-					"match": "\\b(k\")\\w+(?:\\.\\w+)*(\")",
+					"match": "\\b(k~)[^~]+(~)",
 					"captures": {
 						"1": {"name":"ocultar.n.notasid"},
 						"2": {"name":"ocultar.n.notasid"}
@@ -433,7 +427,10 @@
 				},
 				{"name":"operador.n.paraString.unico.notasid",
 					"match": "(?<=\\s|\"|')[&+=]=?(?=\\s|\"|')"
-			}]
+				},
+				{"name":"operador.n.member-access.notasid",
+					"match": "(?<=¨)\\.(?=\\w{1,2}¨)"
+				}]
 		},
 		"códigos":{
 			"patterns": [
@@ -553,8 +550,6 @@
 		"Marcadores de Regiones":{
 			"name": "ocultar.n.marcador-de-region.notasid",
 			"match": "(?:(})?|\\b)R(?(1)\\b|{)"
-		},
-		"Prueba":{
 		}
 	},
 	"scopeName": "source.txt"

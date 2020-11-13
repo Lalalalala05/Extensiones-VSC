@@ -44,6 +44,26 @@ Símbolos clave {
 	| (○), (☺), (☻)
 }
 
+Strings {
+	(DS significa "Dentro String" y FS significa 'Fuera String')
+	"DS" FS "D S" FS 'DS' FS 'D S' FS' (no se abre) FS 'DS' F'S (no se abre) 'DS ' FS
+	Multilínea: "
+	DS
+	DS
+	" FS
+	"DS
+	DS" FS
+	'
+	DS
+	DS
+	' FS
+	'DS
+	DS' FS
+	Escapes: "DS\" (no se escapa) FS "DS"" (se escapa) DS" 'DS\' (no se escapa) FS 'DS'' (se escapa) DS' FS 'DS '' (se escapa) DS'
+	"C¨cla¨P¨pro.¨F¨mét¨ 456"
+	'C¨cla¨P¨pro.¨F¨mét¨ 456'
+}
+
 Prueba regiones (folding) {
 R{
 		a
@@ -147,12 +167,6 @@ R{
 	}R Esta línea debiese ocultarse (○)
 }
 
-Strings{
-	asdg sadf "sdgh " dslñf jñl 'slajf' jñl'slajf' slkdjfsl "sdfj lñd' \" jdslfj lsjf" kjsfsajfl ' \' \skld\fjskdljflk' sjdflñsjfdl" sdjfslñdfj" sldfjñlñj' sldfjlsdjf' sldfjsldfj'
-	sdf ' sdfj' sldkjf ' lksjljl " lkdjf' sdfjkl " sadfhlks ' lñsdfj "
-	"C¨cla¨P¨pro.¨F¨mét¨"
-}
-
 Números{
 	Sin separador de miles{
 		¡234.3242!
@@ -174,22 +188,22 @@ Números{
 		0xaf, 0xag, ¡0x8080_aaAa_Bb._1!
 	}
 	Con Unidades y monetario{
-		34º, 34,000º
+		34º, 34,000º, 34_000º, 34,000¾º, 34_000¾º
 		34ª, 34,000ª
-		34°, 34,000°
+		34°, 34,000°, 34_000°, 34,000¾°, 34_000¾°
 		34hs, 34,000Hs
 		34', 34,000'
-		34min, 34,000MIN
-		34'', 34,000''
-		34seg, 34,000Seg
+		34min, 34,000MIN, 34_000MIN, 34,000¾MIN, 34_000¾MIN
+		34'', 34,000'', 34_000'', 34,000¾'', 34_000¾''
+		34seg, 34,000Seg, 34_000Seg, 34,000¾Seg, 34_000¾Seg
 		34K, 34,000k
-		34Km, 34,000km
+		34Km, 34,000km, 34_000km, 34,000¾km, 34_000¾km
 		34m, 34,000M
 		34l, 34,000L
-		34Gb, 34,000GB
+		34Gb, 34,000GB, 34_000GB, 34,000¾GB, 34_000¾GB
 
-		$34, £34
-		34$, 34£
+		$34, £34, $34¼, £34.25, $34,000, £34,000, $34,000½, £34_000.5, $34_000, £34_000, $34_000½, £34_000.5,
+		 34$, 34£, 34¼$, 34.25£, 34,000$, 34,000£, 34,000½$, 34_000.5£, 34_000$, 34_000£, 34_000½$, 34_000.5£,
 	}
 	No número {
 		n°, nº, N°, Nº, n°_, nº_,
@@ -393,6 +407,8 @@ URL R{
 	https://www.codeproject.com/algo/más
 	https://www.youtube.com/algo/más
 	https://gcthesoftwareengineer.com/2017/01/how-to-create-custom-syntax-highlighting-in-a-visual-studio-code-extension/
+	https://code.visualstudio.com/api/references/theme-color
+	https://docs.microsoft.com/en-us/xamarin/essentials/?context=xamarin/android
 "C:\Users\jonah\.vscode\" no quiero que esto forme parte del PATH "Agrego más comillas dobles"
 	"C:\Users\jonah\.vscode" no quiero que esto forme parte del PATH "Agrego más comillas dobles"
 	"C:\Users\jonah\.vscode\" no quiero que esto forme parte del PATH "Agrego más comillas dobles"
@@ -420,20 +436,23 @@ Comentarios{
 }
 
 Operadores{
-	12 + 35				12+35				dfg+aab
-	14 - 65				14-65				dfg-aab
-	45 ++ 978			45++978			dfg++aab
-	132 +- 9871		132+-9871		dfg+-aab
-	45 * 8				45*8				dfg*aab
-	12 / 9				12/9				dfg/aab
+	12 + 35       12+35				dfg+aab
+	14 - 65       14-65				dfg-aab
+	45 ++ 978     45++978			dfg++aab
+	132 +- 9871   132+-9871		dfg+-aab
+	45 * 8        45*8				dfg*aab
+	12 / 9        12/9				dfg/aab
 	"a" & "b"    "a"&"b"
 	'a' & 'b'    'a'&'b'
-	12 = 9				12=9				dfg=aab
+	12 = 9        12=9				dfg=aab
 	'a' = 'b'    'a'='b'
 	 12 +=  9      12+=9    12=+9    dfg+=aab
 	'a' += 'b'    'a'+='b' 'a'=+'b'
 	 12 ==  9      12==9    dfg==aab
 	'a' == 'b'    'a'=='b'
+	member-access R{
+		C¨Clase¨.P¨Propiedad¨, C¨Clase¨.F¨Método¨, P¨Propiedad¨.F¨Método¨, F¨Método¨. , .P¨Propiedad¨, F¨Método¨.W¨palabra clave¨,
+	}R
 }
 
 miembros y tipos{
@@ -443,9 +462,9 @@ miembros y tipos{
 
 Señaladores de tokens R{
 	C¨abc.abc.abc¨, C¨abc¨, C¨abc<abc>¨, C¨abc<abc<abc>>¨, C¨abc(3)¨, C¨abc1<def2>3(4)¨, C¨(0)abc<def[gh]>¨, C¨abc<def[12(d45{¨ ¡Cierre forzado! }
-	C"abc.abc.abc", C"abc", C"abc<abc>", C"abc<abc<abc>>", C"abc(3)", C"abc1<def2>3(4)", C"(0)abc<def[gh]>", C"abc<def[12(d45{" ¡Cierre forzado! }
-	P¨abc¨, P"abc", ¨.abc abc, ¨.abc$%&#?""<>def ghi,
-	c¨abc¨, c"abc"
+	C~abc.abc.abc~, C~abc~, C~abc<abc>~, C~abc<abc<abc>>~, C~abc(3)~, C~abc1<def2>3(4)~, C~(0)abc<def[gh]>~, C~abc<def[12(d45{~ ¡Cierre forzado! }
+	P¨abc¨, P~abc~, ¨.abc abc, ¨.abc$%&#?""<>def ghi,
+	c¨abc¨, c~abc~
 	F¨abc¨, F¨abc()¨, F¨asd(dff, sflññ)<sflñdf?s ffsñl¡ dfdsa! #& ¨,
 	F¨abc.def()¨, F¨abc.def.ghi()¨, F¨abc(2).def(6).ghi(5, sfad)¨
 	E¨abc¨
