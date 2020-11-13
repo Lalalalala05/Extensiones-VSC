@@ -2,3 +2,7 @@
 PRINT RIGHT('')
 PRINT DATALENGTH('')
 PRINT '' COLLATE Modern_Spanish_CI_AS
+
+SYS.OBJECTS
+sys.OBJECTS
+SYS.asfsfsdf
