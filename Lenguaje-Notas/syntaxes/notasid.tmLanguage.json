@@ -130,7 +130,7 @@
 		"palabras clave": {
 			"patterns": [
 				{"name": "palabra.clave.n.string.notasid",
-					"match": "(?<!\\w)(Notas?:|Pendientes?:|Soluci(ón|ones):|Cr(Lf)?|Lf|(?<com>\"|)Command Palette\\k<com>|Command ?=|\"command\"|\"when\")(?!\\w)"
+					"match": "(?<!\\w)(Notas?:|Pendientes?:|Soluci(ón|ones):|[Pp]aths?|Cr(Lf)?|Lf|(?<com>\"|)Command Palette\\k<com>|Command ?=|\"command\"|\"when\")(?!\\w)"
 				},
 				{"name": "palabra.clave.n.string.nombre-programa.notasid",
 					"match": "(?<![\\w}])(VS( ?Code|C|(?<año> ?20[\\d_?]{2}))|SQL( ?MS| Server)\\g<año>?)(?!\\w)"
@@ -155,6 +155,9 @@
 				},
 				{"name": "simbolos.clave.bien.n.string.notasid",
 					"match": "\\([○☺☻]\\)"
+				},
+				{"name": "simbolos.clave.masomenos.n.string.notasid",
+					"match": "\\(~\\)"
 				},
 				{"name": "simbolos.clave.mal.n.string.notasid",
 					"match": "\\(×\\)"
@@ -187,7 +190,7 @@
 			"captures": { "0":{ "name": "ocultar.n" } },
 			"patterns": [
 				{"name":"itemizador.listado.n.string.notasid",
-					"match": "(?<=^\\s*)(?!\\}L)\\S.*?(?=(\\t| {2,}|$))"
+					"match": "(?<=^\\s*)(?!\\}L|\\|\\s)\\S.*?(?=(\\t| {2,}|$))"
 				},
 				{"include": "source.txt"
 			}]
@@ -215,7 +218,7 @@
 				{"name":"link.n.string.notasid",
 					"match":"\\b(http|https|ftp|file)://(\\S+)\\b/?",
 					"captures": { "2": { "patterns":[ {"name": "link.dominio-destacado.n.string.notasid",
-						"match": "(?x)( (?: stackoverflow | git-scm | (?<=[^\\.]+\\.)(?: visualstudio | microsoft) | (?<=www\\.)(?: youtube | codeproject | google ))(?=\\.com) | (?<=en\\.)wikipedia(?=\\.org))"
+						"match": "(?x)( (?: stackoverflow | git-scm | docs\\.microsoft | (?<=[^\\.]+\\.)(?: visualstudio | microsoft) | (?<=www\\.)(?: youtube | codeproject | google ))(?=\\.com) | (?<=en\\.)wikipedia(?=\\.org))"
 					}]}}
 				},
 				{"name":"path.n.string.notasid",
@@ -346,21 +349,18 @@
 						"2": {"name":"ocultar.n.notasid"}
 					}
 				},
-				{"name":"metodo.senialado.notasid",
-					"match": "\\b(F¨)((?:[^¨.]+\\.)*)([^¨.]+)(¨)",
+				{"name":"entity.name.function.senialado.notasid",
+					"match": "\\b(F¨)([^¨]+)(¨)",
 					"captures": {
-						"2": {"name":"path.metodo.notasid",
-							"patterns": [
-								{"name":"operador.n.caracterespecial.notasid", "match": "\\W"},
-								{"name":"constant.numeric.notasid", "match": "\\b\\d+\\b"}
-								]},
-						"3": {"name":"entity.name.function.senialado.notasid",
-							"patterns": [
-								{"name":"operador.n.caracterespecial.notasid", "match": "\\W"},
-								{"name":"constant.numeric.notasid", "match": "\\b\\d+\\b"}
-								]},
+						"2": { "patterns": [
+							{"name":"operador.n.caracterespecial.notasid",
+								"match": "\\W"
+							},
+							{"name":"constant.numeric.notasid",
+								"match": "\\b\\d+\\b"
+							}]},
 						"1": {"name":"ocultar.n.notasid"},
-						"4": {"name":"ocultar.n.notasid"}
+						"3": {"name":"ocultar.n.notasid"}
 					}
 				},
 				{"name":"evento.n.senialado.notasid",
@@ -385,10 +385,14 @@
 					}
 				},
 				{"name":"interface.n.senialado.notasid",
-					"match": "\\b(I¨)[^¨]+(¨)",
+					"match": "\\b(I¨)([^¨]+)(¨)",
 					"captures": {
+						"2": { "patterns": [
+							{"name":"operador.n.caracterespecial.notasid",
+								"match": "\\W"
+							}]},
 						"1": {"name":"ocultar.n.notasid"},
-						"2": {"name":"ocultar.n.notasid"}
+						"3": {"name":"ocultar.n.notasid"}
 					}
 				},
 				{"name":"interface.ita.n.senialado.notasid",
@@ -407,6 +411,17 @@
 				},
 				{"name":"keyword.control.notasid",
 					"match": "\\b(WC¨)([^¨]+)(¨)",
+					"captures": {
+						"2": { "patterns": [
+							{"name":"operador.n.caracterespecial.notasid",
+								"match": "\\W"
+							}]},
+						"1": {"name":"ocultar.n.notasid"},
+						"3": {"name":"ocultar.n.notasid"}
+					}
+				},
+				{"name":"instancia.n.notasid",
+					"match": "\\b(i¨)([^¨]+)(¨)",
 					"captures": {
 						"2": { "patterns": [
 							{"name":"operador.n.caracterespecial.notasid",

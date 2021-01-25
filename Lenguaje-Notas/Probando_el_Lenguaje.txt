@@ -2,6 +2,7 @@ Palabras Calve{
 	Nota, Notas, Nota:, Notas:,
 	Pendiente, Pendientes, Pendiente:, Pendientes:,
 	Solución, Soluciones, Solución:, Soluciones:,
+	Path, path, PATH, PaTh, PatH,
 	Command Palette, "Command Palette", #Command Palette#
 	command, Command, command=, Command=, "command", "Command",
 	when, when=, "when",
@@ -40,8 +41,9 @@ Símbolos clave {
 	| ←←---→→
 	| ←→---←→
 	| -→---←-
-	| (×)
 	| (○), (☺), (☻)
+	| (~)
+	| (×)
 }
 
 Strings {
@@ -211,9 +213,9 @@ Números{
 	}
 }
 
-Ambos: 46 46' 4'56' '46' ¡Cierre forzado! (×)'
+Ambos: 46 46' 4'56' '46'
 
-Exclamaciones{
+¡Exclamaciones! {
   ¡sf}fa!
  _¡sf}fa!, ¡sf}fa!_
  #¡sf}fa!, ¡sf}fa!#
@@ -249,6 +251,14 @@ Exclamaciones{
   ¿Nota:? ,  ¿sf\? \fa? ,  ¿Nota: \?? ,  ¿c'sfsg'? ,  ¿¡sadf!? ,  ¿¡sd  ¿asfl?  sf!? ,  ¿"lajsldflj"? ,  ¿//sdasdf? , ¿4646?, ¿/*sdfsaf/*sdfsfas*/sadf*/?
  ¿¿Nota:??, ¿¿sf\??\fa??, ¿¿Nota:\????, ¿¿c'sfsg'??, ¿¿¡sadf!??, ¿¿¡sd ¿¿asfl?? sf!??, ¿¿"lajsldflj"??, ¿¿//sdasdf??, ¿4646?, ¿/*sdfsaf/*sdfsfas*/sadf*/?
 ¿¿¿Nota:???                                                     ¿¿¡sd  ¿asfl?  sf!??
+	Veo como resalta:
+	Texto normal texto normal texto normal texto normal texto normal texto normal texto normal texto normal texto normal
+	Texto normal texto normal ¡texto importante! texto normal texto normal ¡¡texto muy importante!! texto normal texto normal
+	Texto normal texto normal texto normal texto normal texto normal texto normal texto normal texto normal texto normal
+
+	Texto normal texto normal ¡texto importante!
+
+	Texto normal texto normal ¡¡texto muy importante!!
 }
 
 Código {
@@ -350,14 +360,15 @@ c_d) c_d) (c_d) (c_de)
  c.d)    ( c.d)
  c.de) (c._) (_.d) (c._.2)
 }
-L{ Listado
+L{ Lista
 	 item1  Descripcion c'sdñjlñ' sdfs.sdfsaf.
 	2item		Descripcion Notas:
 	Notas:		{[()]}
+	| Excepción "|"
 	#$sldfjlsdjf		Descripcion ¿safdfg?
 	()=?=)		Descripcion 'asdfsfd'
 	_		Descripcion ¡asdff!
-	16546		Descripcion //sdfsdf
+16546		Descripcion //sdfsdf
 	16546)		Descripcion /*
 	asdfsdf
 	*/
@@ -466,12 +477,13 @@ Señaladores de tokens R{
 	P¨abc¨, P~abc~, ¨.abc abc, ¨.abc$%&#?""<>def ghi,
 	c¨abc¨, c~abc~
 	F¨abc¨, F¨abc()¨, F¨asd(dff, sflññ)<sflñdf?s ffsñl¡ dfdsa! #& ¨,
-	F¨abc.def()¨, F¨abc.def.ghi()¨, F¨abc(2).def(6).ghi(5, sfad)¨
+	F¨abc.def()¨, F¨abc.def.ghi()¨, F¨abc(2).def(6).ghi(5, sfad)¨, F¨Algo(...)¨
 	E¨abc¨
 	k¨abc¨
-	I¨abc¨
+	I¨abc¨, I¨abc<T>¨
 	W¨DefaultKeyWord¨
 	WC¨if¨, WC¨Catch()¨, WC¨For Each¨,
+	i¨instancia¨, i¨instancia.propiedad¨
 }R
 
 Regex{

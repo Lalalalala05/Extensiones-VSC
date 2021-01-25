@@ -388,7 +388,7 @@
 			"settings": { "foreground": "#ee6a6a" }
 		},
 		{"scope": "EXCLAMACION.n",
-			"settings": { "foreground": "#a44" }
+			"settings": { "foreground": "#e03434" }
 		},
 		{"scope": "pregunta.n",
 			"settings": { "foreground": "#eeade9" }
@@ -430,6 +430,9 @@
 		},
 		{"scope": "simbolos.clave.bien.n",
 			"settings": { "foreground": "#61e978" },
+		},
+		{"scope": "simbolos.clave.masomenos.n",
+			"settings": { "foreground": "#A08a51" },
 		},
 		{"scope": "simbolos.clave.mal.n",
 			"settings": { "foreground": "#e02b2b" },
@@ -473,6 +476,9 @@
 		{"scope": "evento.VS2019.n",
 			"settings": { "foreground": "#f0ca93" },
 		},
+		{"scope": "instancia.n",
+			"settings": { "foreground": "#c6e4f5" },
+		},
 
 		{"scope": "ocultar.n",
 			"settings": { "foreground": "#464949" }
@@ -498,6 +504,10 @@
 
 		{"scope": "entity.name.variable.parameter.cs",
 			"settings": { "foreground": "#c6e4f5" },
+		},
+
+		{"scope": "string.quoted.double.xdml",
+			"settings": { "foreground": "#569cd6" },
 		}
 	]
 
