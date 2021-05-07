@@ -1,4 +1,4 @@
-Palabras Calve{
+Palabras Clave{
 	Nota, Notas, Nota:, Notas:,
 	Pendiente, Pendientes, Pendiente:, Pendientes:,
 	Solución, Soluciones, Solución:, Soluciones:,
@@ -20,7 +20,12 @@ Palabras Calve{
 	Suaves R{
 		Ej:, Ejs:, EJ:, eJs:, EJS:
 		Ej., Ejs., EJ., eJs., EJS., Ej.:, Ej:.
+		Ej,, Ejs,, EJ,, eJs,, EJS,, Ej,:, Ej:,
 		_Ej., _Ejs., _EJ:
+		por ej:, Por ej:, Por Ej:, Por Ejs:, Por EJ:, por eJs:, Por EJS:
+		por ej., Por ej., Por Ej., Por Ejs., Por EJ., por eJs., Por EJS.
+		por ej,, Por ej,, Por Ej,, Por Ejs,, Por EJ,, por eJs,, Por EJS,
+		Por ejemplo,, por ejemplo:, por ejemplo.
 		i.e., I.E., .i.e.,
 	}R
 }
@@ -65,6 +70,11 @@ Strings {
 	"C¨cla¨P¨pro.¨F¨mét¨ 456"
 	'C¨cla¨P¨pro.¨F¨mét¨ 456'
 }
+
+Denominación Aprox R{
+	"string común", ~"denominación aprox", texto normal.
+	~"Supuesto; en teoría; por decir algo". ¡~"sdf"!; ¿~"sdf"?; "a ~"b" c"; "~"
+}R
 
 Prueba regiones (folding) {
 R{
@@ -412,6 +422,7 @@ F1	    Display Help
 
 URL R{
 	https://git-scm.com/algo/más
+	https://github.com/dotnet/standard/issues/1330
 	https://www.google.com/algo/más
 	https://stackoverflow.com/algo/más
 	https://en.wikipedia.org/algo/más
@@ -433,6 +444,8 @@ URL R{
 	".\jonah\.vscode\"
 	"..\jonah\.vscode\"
 	"...\jonah\.vscode"
+	file://C:\Users\jonah\AppData\Local\Programs\Microsoft VS Code\resources\app\extensions\?
+	//Abrir links funciona con algo que no tiene nada que ver con los tokens que definan en el lenguaje, por lo que no puedo manipular su comportamiento desde acá.
 }R
 
 Comentarios{
@@ -480,14 +493,22 @@ Señaladores de tokens R{
 	F¨abc.def()¨, F¨abc.def.ghi()¨, F¨abc(2).def(6).ghi(5, sfad)¨, F¨Algo(...)¨
 	E¨abc¨
 	k¨abc¨
-	I¨abc¨, I¨abc<T>¨
+	I¨Enum¨, I¨Interface<T>¨
 	W¨DefaultKeyWord¨
 	WC¨if¨, WC¨Catch()¨, WC¨For Each¨,
 	i¨instancia¨, i¨instancia.propiedad¨
+	R1¨resaltado amarillo¨
+	S¨Estructura¨, S¨Estructura<T>¨
 }R
 
 Regex{
 	rgx{ asdfg }rgx
+	rgx{
+		dsflj
+	}rgx
+	rgx{ dfasg
+		dsflj
+	ghsh }rgx
 }
 -----------------------------------------
 Formatos fuente {

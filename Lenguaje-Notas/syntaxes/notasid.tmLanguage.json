@@ -5,11 +5,11 @@
 		{"include": "#Marcadores de Regiones"},
 		{"include": "#siempre destacan"},
 		{"include": "#operadores"},
-		
+
 		{"include": "#tipo string en línea"},
 		{"include": "#tipo comentario en línea"},
-		{"include": "#regex"},
 
+		{"include": "#regex"},
 		{"include": "#códigos"},
 		{"include": "#tipo string en bloque"},
 		{"include": "#tipo comentario en bloque"},
@@ -22,6 +22,7 @@
 			{"include": "#itemizadores"},
 			{"include": "#palabras clave"},
 			{"include": "#símbolos clave"},
+			{"include": "#Denominación Aprox"},
 			{"include": "#numeros"},
 			{"include": "#señaladores de tokens"}
 		]},
@@ -30,6 +31,7 @@
 			{"include": "#itemizadores"},
 			{"include": "#palabras clave"},
 			{"include": "#símbolos clave"},
+			{"include": "#Denominación Aprox"},
 			{"include": "#atajo"},
 			{"include": "#señaladores de tokens"},
 			{"include": "#entre puntuaciones"}
@@ -39,7 +41,7 @@
 			"patterns": [
 				{"name": "string.quoted.double.notasid",
 					"begin": "\"",
-					"end": "\"(?!\")",
+					"end": "(?<!(?<!\")~)\"(?!\")",
 					"patterns": [
 						{"name": "constant.character.escape.dou.notasid",
 							"match": "\"\""
@@ -59,7 +61,7 @@
 			}]
 		},
 		"tipo string": { "patterns": [
-			{"include": "#tipo string en línea"}, 
+			{"include": "#tipo string en línea"},
 			{"include": "#tipo string en bloque"}
 		]},
 		"siempre destacan + string en línea": { "patterns": [
@@ -93,7 +95,7 @@
 				{"include": "source.txt"}
 		]},
 		"tipo comentario": { "patterns": [
-			{"include": "#tipo comentario en línea"}, 
+			{"include": "#tipo comentario en línea"},
 			{"include": "#tipo comentario en bloque"}
 		]},
 		"numeros": {
@@ -130,7 +132,7 @@
 		"palabras clave": {
 			"patterns": [
 				{"name": "palabra.clave.n.string.notasid",
-					"match": "(?<!\\w)(Notas?:|Pendientes?:|Soluci(ón|ones):|[Pp]aths?|Cr(Lf)?|Lf|(?<com>\"|)Command Palette\\k<com>|Command ?=|\"command\"|\"when\")(?!\\w)"
+					"match": "(?<!\\w)(Notas?:?|Pendientes?:?|Soluci(ón|ones):?|[Pp]aths?|Cr(Lf)?|Lf|(?<com>\"|)Command Palette\\k<com>|Command ?=|\"command\"|\"when\")(?!\\w)"
 				},
 				{"name": "palabra.clave.n.string.nombre-programa.notasid",
 					"match": "(?<![\\w}])(VS( ?Code|C|(?<año> ?20[\\d_?]{2}))|SQL( ?MS| Server)\\g<año>?)(?!\\w)"
@@ -139,7 +141,7 @@
 					"match": "(?<![\\w}])(C(\\+\\+|#|Sharp)|JSON|RegEx|SQL|VB|Xamarin|XAML)(?![\\w{])"
 				},
 				{"name": "palabra.clave.suave.n.string.notasid",
-					"match": "(?i)\\bEjs?[:.](?!\\w)"
+					"match": "(?i)(?:\\bEjs?|\\bPor ej(?:emplo)?)[:.,](?!\\w)"
 				},
 				{"name": "palabra.clave.suave.n.string.notasid",
 					"match": "\\bi\\.e\\.(?!\\w)"
@@ -164,9 +166,11 @@
 				}]
 		},
 		"regex":{
-			"name":"constant.regexp",
-			"match": "rgx\\{\\s(.+?)\\s\\}rgx",
-			"captures": { "1":{ "name":"regex.interior.n.notasid" } }
+			"name":"regex.interior.n",
+			"begin": "rgx\\{",
+			"end": "\\}rgx",
+			"beginCaptures": {"0":{"name":"ocultar.n.delimitador-regex.notasid"}},
+			"endCaptures": {"0":{"name":"ocultar.n.delimitador-regex.notasid"}}
 		},
 		"itemizadores":{
 			"patterns": [
@@ -218,7 +222,7 @@
 				{"name":"link.n.string.notasid",
 					"match":"\\b(http|https|ftp|file)://(\\S+)\\b/?",
 					"captures": { "2": { "patterns":[ {"name": "link.dominio-destacado.n.string.notasid",
-						"match": "(?x)( (?: stackoverflow | git-scm | docs\\.microsoft | (?<=[^\\.]+\\.)(?: visualstudio | microsoft) | (?<=www\\.)(?: youtube | codeproject | google ))(?=\\.com) | (?<=en\\.)wikipedia(?=\\.org))"
+						"match": "(?x)( (?: stackoverflow | git(?:hub|-scm) | docs\\.microsoft | (?<=[^\\.]+\\.)(?: visualstudio | microsoft) | (?<=www\\.)(?: youtube | codeproject | google ))(?=\\.com) | (?<=en\\.)wikipedia(?=\\.org))"
 					}]}}
 				},
 				{"name":"path.n.string.notasid",
@@ -430,7 +434,37 @@
 						"1": {"name":"ocultar.n.notasid"},
 						"3": {"name":"ocultar.n.notasid"}
 					}
+				},
+				{"name":"resaltado_amarillo.n.notasid",
+					"match": "\\b(R1¨)([^¨]+)(¨)",
+					"captures": {
+						"2": { "patterns": [
+							{"name":"operador.n.caracterespecial.notasid",
+								"match": "\\W"
+							}]},
+						"1": {"name":"ocultar.n.notasid"},
+						"3": {"name":"ocultar.n.notasid"}
+					}
+				},
+				{"name":"estructura.n.senialado.notasid",
+					"match": "\\b(S¨)([^¨]+)(¨)",
+					"captures": {
+						"2": { "patterns": [
+							{"name":"operador.n.caracterespecial.notasid",
+								"match": "\\W"
+							}]},
+						"1": {"name":"ocultar.n.notasid"},
+						"3": {"name":"ocultar.n.notasid"}
+					}
 				}]
+		},
+		"Denominación Aprox":{
+			"patterns": [
+				{"name":"Denominacion_Aprox.notasid",
+					"match": "(~)(\"[^\"]+\")",
+					"captures": {"1":{"name":"ocultar.n.notasid"}, "2":{"name":"Denominacion_Aprox.n.notasid"}}
+				}
+			]
 		},
 		"operadores":{
 			"patterns": [

@@ -18,7 +18,7 @@
 		"sideBarSectionHeader.background": "#00000000",
 		"sideBarSectionHeader.border": "#cccccc33",
 		"sideBarTitle.foreground": "#bbbbbb",
-		"statusBarItem.hoverBackground": "#6060ff",
+		"statusBarItem.hoverBackground": "#22bb92",
 		"statusBarItem.remoteBackground": "#16825d",
 		"statusBarItem.remoteForeground": "#ffffff"
 	},
@@ -465,10 +465,13 @@
 			"settings": { "foreground": "#4EC9B0", "fontStyle": "italic" },
 		},
 		{"scope": "interface.n",
-			"settings": { "foreground": "#ADD6A3" },
+			"settings": { "foreground": "#b8d7a3" },
 		},
 		{"scope": "interface.ita.n",
 			"settings": { "foreground": "#ADD6A3", "fontStyle": "italic" },
+		},
+		{"scope": "estructura.n",
+			"settings": { "foreground": "#81c691" },
 		},
 		{"scope": "evento.n",
 			"settings": { "foreground": "#e6b878" },
@@ -478,6 +481,12 @@
 		},
 		{"scope": "instancia.n",
 			"settings": { "foreground": "#c6e4f5" },
+		},
+		{"scope": "resaltado_amarillo.n",
+			"settings": { "foreground": "#e6e646" },
+		},
+		{"scope":"Denominacion_Aprox.n",
+			"settings": { "foreground": "#d4c5bf", "fontStyle": "italic" }
 		},
 
 		{"scope": "ocultar.n",
@@ -501,10 +510,6 @@
 			"settings": { "fontStyle": "italic bold underline" },
 		},
 
-
-		{"scope": "entity.name.variable.parameter.cs",
-			"settings": { "foreground": "#c6e4f5" },
-		},
 
 		{"scope": "string.quoted.double.xdml",
 			"settings": { "foreground": "#569cd6" },
