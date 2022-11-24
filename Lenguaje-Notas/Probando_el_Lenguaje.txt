@@ -46,6 +46,7 @@ Símbolos clave {
 	| ←←---→→
 	| ←→---←→
 	| -→---←-
+	| ←———→, ←–––→, ←–——→, ←—–-→, ————→→→
 	| (○), (☺), (☻)
 	| (~)
 	| (×)
@@ -428,6 +429,7 @@ URL R{
 	https://en.wikipedia.org/algo/más
 	https://www.codeproject.com/algo/más
 	https://www.youtube.com/algo/más
+	https://youtu.be/algo/más
 	https://gcthesoftwareengineer.com/2017/01/how-to-create-custom-syntax-highlighting-in-a-visual-studio-code-extension/
 	https://code.visualstudio.com/api/references/theme-color
 	https://docs.microsoft.com/en-us/xamarin/essentials/?context=xamarin/android
@@ -444,6 +446,13 @@ URL R{
 	".\jonah\.vscode\"
 	"..\jonah\.vscode\"
 	"...\jonah\.vscode"
+	"C:/Users/jonah/.vscode" no quiero que esto forme parte del PATH "Agrego más comillas dobles"
+	"C:/Users/jonah/.vscode/" no quiero que esto forme parte del PATH "Agrego más comillas dobles"
+	"c:/Users/jonah/.vscode"
+	"./jonah/.vscode"
+	"../jonah/.vscode"
+	"./jonah/.vscode/"
+	".../jonah/.vscode"
 	file://C:\Users\jonah\AppData\Local\Programs\Microsoft VS Code\resources\app\extensions\?
 	//Abrir links funciona con algo que no tiene nada que ver con los tokens que definan en el lenguaje, por lo que no puedo manipular su comportamiento desde acá.
 }R

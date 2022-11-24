@@ -150,7 +150,7 @@
 		"símbolos clave": {
 			"patterns": [
 				{"name": "palabra.clave.n.string.simbolo-flecha-con-guion.notasid",
-					"match": "(←+)?-+(?(1)→*|→+)"
+					"match": "(←+)?[-–—]+(?(1)→*|→+)"
 				},
 				{"name": "palabra.clave.n.string.simbolo-flecha-sin-guion.notasid",
 					"match": "(←|→(?!←)){2,}"
@@ -221,12 +221,18 @@
 			"patterns": [
 				{"name":"link.n.string.notasid",
 					"match":"\\b(http|https|ftp|file)://(\\S+)\\b/?",
-					"captures": { "2": { "patterns":[ {"name": "link.dominio-destacado.n.string.notasid",
-						"match": "(?x)( (?: stackoverflow | git(?:hub|-scm) | docs\\.microsoft | (?<=[^\\.]+\\.)(?: visualstudio | microsoft) | (?<=www\\.)(?: youtube | codeproject | google ))(?=\\.com) | (?<=en\\.)wikipedia(?=\\.org))"
-					}]}}
+					"captures": { "2": {
+						"patterns": [
+							{"name": "link.dominio-destacado.n.string.notasid",
+								"match": "(?x)( (?: stackoverflow | git(?:hub|-scm) | docs\\.microsoft | (?<=[^\\.]+\\.)(?: visualstudio | microsoft) | (?<=www\\.)(?: codeproject | google ))(?=\\.com) | (?<=en\\.)wikipedia(?=\\.org))"
+							},
+							{"name": "link.dominio-destacado2.n.string.notasid",
+								"match": "(?x)( youtu.be | www\\.youtube\\.com)"
+						}]
+					}}
 				},
 				{"name":"path.n.string.notasid",
-					"match":"(?<!\\w)\"([A-Z]:|\\.\\.?)\\\\.+?\""
+					"match":"(?<!\\w)\"([A-Z]:|\\.\\.?)[\\\\/].+?\""
 				}
 			]
 		},
@@ -468,12 +474,6 @@
 		},
 		"operadores":{
 			"patterns": [
-				{"name":"operador.n.numerico.unico.notasid",
-					"match": "(?<=\\s|\\d)[+\\-*/%^=](?=\\s|\\d)"
-				},
-				{"name":"operador.n.numerico.multiple.notasid",
-					"match": "(?<=\\s|\\d)([+\\-*=]{2}|[/&%]=)(?=\\s|\\d)"
-				},
 				{"name":"operador.n.paraString.unico.notasid",
 					"match": "(?<=\\s|\"|')[&+=]=?(?=\\s|\"|')"
 				},

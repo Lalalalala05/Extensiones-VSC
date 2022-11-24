@@ -402,6 +402,9 @@
 		{"scope": "link.dominio-destacado.n",
 			"settings": { "foreground": "#6c8dc7" }
 		},
+		{"scope": "link.dominio-destacado2.n",
+			"settings": { "foreground": "#cc6666" }
+		},
 		{"scope": "atajo.n",
 			"settings": { "foreground": "#7a7ae0" }
 		},
@@ -438,7 +441,7 @@
 			"settings": { "foreground": "#e02b2b" },
 		},
 		{"scope": "palabra.clave.n",
-			"settings": { "foreground": "#5fa78f" },
+			"settings": { "foreground": "#7fa78f" },
 		},
 		{"scope": "palabra.clave.ita.n",
 			"settings": { "foreground": "#5fa78f", "fontStyle": "italic" },
